@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위바위보 게임</title>
+    <style>
+        button>img{
+            width: 200px;
+            height: 200px;
+        }
+    
+    </style>
+</head>
+<body>
+    <button type="button" onclick="setNum(1);" >
+        <img src="/image/가위.png" >
+    </button>
+    <button type="button" onclick="setNum(2);">
+        <img src="/image/바위.png" alt="">
+    </button>
+    <button type="button" onclick="setNum(3);">
+        <img src="/image/보.png" alt="">
+    </button>
+    <h3 id="result"> 결과 출력 </h3>
+    
+    <script>
+        let userNum=0; //상태에 대한 숫자
+        let userNumKor=""; //상태에 대한 문자
+        let conNum=0;
+        let comNumKor = "";
+        let result = 0; // 결과 여부
+        let win = 0;
+        let lose = 0;
+        let draw = 0;
+        let cnt=0;
+        let now ="";
+        let print = "";
+
+        
+        // 컴퓨터, 유저 가위바위보
+        function setNum(userNum){
+            
+            switch(userNum){
+                case 1 : 
+                    userNumKor = "가위";
+                    break;
+                case 2 : 
+                    userNumKor = "바위";
+                    break;
+                case 3 : 
+                    userNumKor = "보";
+                    break;
+            }
+            comNum = Math.floor(Math.random()*3)+1;
+            switch(comNum){
+                case 1: comNumKor="가위"; break;
+                case 2: comNumKor="바위"; break;
+                case 3: comNumKor="보"; break;
+            }
+            
+            
+            // 게임진행
+            play(userNum, comNum); 
+
+            // 승패
+            if(comNum-userNum == 0){
+                now = `비겼습니다!`;
+            } else if(comNum - userNum == -1 || comNum - userNum == 2){
+                now = `이겼습니다!`;
+            } else {
+                now = `졌습니다ㅠㅠ`;
+            }                
+
+            // 출력
+            document.getElementById('result').innerHTML = print;
+                    print = `나 : ${userNumKor} <br>`;
+            print += `컴퓨터: ${comNumKor} <br>`;
+            print += `이번 승부는 ${now} <br>`
+            print += `-- 현재 전적 -- <br>`
+            print += `승: ${win} <br>`;
+            print += `패: ${lose} <br>`;
+            print += `무: ${draw} <br>`;
+            print += `게임 횟수: ${cnt} <br>`;
+            print += `승률: ${(win/(cnt-draw)*100).toFixed(2)}% `;    
+        }
+
+        
+        //결과 (0은 무승부, 1은 승리, -1는 패배)
+        function play(userNum,comNum){
+            switch(comNum){
+                    case 1: 
+                        userNum == 1? draw++: userNum == 2? win++ : lose++ ; 
+                        break;
+                    case 2: 
+                        userNum == 1? lose++ : userNum == 2? draw++ : win++ ; 
+                        break;
+                    case 3: 
+                        userNum == 1? win++ : userNum == 2? lose++ : draw++ ; 
+                        break;
+                }
+                cnt++;
+        }
+        
+      
+        
+        </script>
+</body>
+</html>

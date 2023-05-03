@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>할인율</title>
+</head>
+<body>
+    <form action="">
+        가격 : <input type="text" id="price"> 원 <br>
+        할인율 : <input type="text" id="dis"> % <br>
+        <button type="button" onclick="calc();"> 할인가격 계산 </button>
+    </form>
+
+    <h3 id="print">
+        <!-- ex) 50000원 5%할인 2500원 -->
+
+    </h3>
+
+    <script>
+        function calc(){
+            let price = document.getElementById('price').value;
+            let dis = document.getElementById('dis').value;
+            let disPrice = price * (dis/100);
+            let payPrice = price - disPrice;
+
+            price = Number(price);
+            dis = Number(dis);
+
+            document.getElementById('print').innerText =
+            `가격: ${price}원 , 할인율: ${dis}%, 
+            할인금액: ${disPrice}원, 지불금액 ${payPrice}원 `;
+        }
+    </script>
+</body>
+</html>

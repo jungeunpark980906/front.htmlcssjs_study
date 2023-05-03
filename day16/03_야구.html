@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>야구게임</title>
+    <style>
+        form{
+            background-color: lightpink;
+            width: 500px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <button type="button" id="start">게임 시작</button>
+    <form action="" >
+        <h1 id="h1"></h1>
+        
+        <input type="text" placeholder="숫자입력(3개의수)" id="user">
+        <button type="button" id="play">숫자 맞추기!</button>
+        <h3 id="h3"></h3>
+        <ul></ul>
+    </form>    
+    <script>
+        const comSet = new Set();
+        const userSet = new Set();
+        
+
+        //컴퓨터 숫자 생성(게임시작시)
+        function makeComSet(){
+            while(comSet.size<3){
+                comSet.add(Math.floor(Math.random()*9));
+            }
+            console.log(comSet);
+            document.getElementById('h1').innerText = '컴퓨터 준비완료! 게임시작!';
+        }
+        //게임시작
+        document.getElementById("start").addEventListener("click", makeComSet);
+        
+        
+        //유저한테 받은 숫자 확인 (boolean)
+        let h3 = document.getElementById('h3');
+        
+        function checkUserNum(userSet){
+            if(userSet.size != 3){
+                h3.innerText = '중복없는 3개의 숫자를 입력해주세요';
+                return false;
+            }else if(isNaN(userSet[0])){
+                h3.innerText = '첫번째 숫자를 숫자로 올리지않으셨습니다';
+                return false;
+            }else if(isNaN(userSet[1])){
+                h3.innerText = '첫번째 숫자를 숫자로 올리지않으셨습니다';
+                return false;
+            }else if(isNaN(userSet[2])){
+                h3.innerText = '첫번째 숫자를 숫자로 올리지않으셨습니다';
+                return false;
+            }else{
+                h3.innerText = '올바른 숫자입니다!';
+                return true;
+            }
+        }
+        
+        //숫자 비교
+        function playGame(){
+            let userNum = document.getElementById('user').value;
+            userSet.add(userNum.split(""));
+
+        }
+
+
+
+        
+    </script>
+</body>
+</html>

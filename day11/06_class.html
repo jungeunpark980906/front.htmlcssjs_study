@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class, 객체, 생성자 </title>
+</head>
+<body>
+    <script>
+        // 클래스생성
+        class Car{
+            // 생성자 생성 
+            //    : 자바스크립트에서는 생성자는 오직 1개! 허용
+            constructor (name, year){
+                this.name = name;
+                this.year = year;
+                this.model = '';
+            }
+        }
+
+        // 객체생성
+        let myCar1 = new Car('쏘나타', 2022);
+        let myCar2 = new Car('그랜저', 2022);
+
+        let myCar3 = new Car();
+        myCar3.name = '아반떼';
+        myCar3.year = 2001;
+        myCar3.model = 'XD';
+
+        let myCar4 = new Car('부릉부릉');
+        myCar4.year = 2023;
+        
+        console.log(myCar1);
+        console.log(myCar2);
+        console.log(myCar3);
+        console.log(myCar4);
+
+        console.log(myCar4.name); // 속성: name 이름만 출력
+        console.log(myCar4.year); // 속성: year 연식만 출력
+        
+
+    </script>
+</body>
+</html>

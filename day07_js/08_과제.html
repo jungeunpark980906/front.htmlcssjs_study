@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>과제</title>
+    <!-- 이름, 국어, 영어, 수학 점수를 입력 -> 계산 버튼을 누르면 이름, 점수, 합계와 평균 출력 -->
+</head>
+<body>
+    <form action="">
+        <fieldset>
+            <legend>성적 계산</legend>
+            이름 : <input type="text" id="name"><br>
+            국어 점수 : <input type="number" id="kor"><br>
+            수학 점수 : <input type="number" id="math"><br>
+            영어 점수 : <input type="number" id="eng"><br>
+            <!-- 단, type='number'가 타입을 정해서 받는 것이 아님! 화면에만 표시 되는 것 -->
+            <button type="button" onclick="calc();">계산</button>
+        </fieldset>
+    </form>
+
+    <ol id="ol"></ol>
+  
+    <script>
+        // 리스트 출력 함수
+        function calc(){
+            let name = document.getElementById('name').value;
+            let kor = document.getElementById('kor').value;
+            let math = document.getElementById('math').value;
+            let eng = document.getElementById('eng').value;
+            // input 창에 입력된 값은 value => string으로 입력됨
+            
+            kor = Number(kor);
+            math = Number(math);
+            eng = Number(eng);
+            let sum = kor+math+eng;
+            let avg = Math.round( sum/3 ); // 정수 단위로 반올림
+            // 숫자가 아님(NaN)을 확인하고 싶다면, number 사용
+
+            // if문 활용 1 : alert
+             if (kor<0 || kor>100){
+                alert('국어 점수가 잘못된 값입니다.')
+                location.reload(); // 새로고침
+             } else if (math<0 || math>100){
+                alert('수학 점수가 잘못된 값입니다.')
+                location.reload();
+             } else if (eng<0 || eng>100){
+                alert('영어 점수가 잘못된 값입니다.')
+                location.reload();
+             } 
+               
+
+
+            // if문 활용 2 : 합격여부
+            // let result ;
+            // if(avg>=60){
+            //     result = 'pass';
+            // }else {
+            //     result = 'fail';
+            // }
+            let result = (avg>=60)? 'pass':'fail';
+
+
+
+            let ol = document.getElementById('ol');
+            let str = `<li> 이름 : ${name} </li> <li> 국어 점수 : ${kor} </li>
+            <li> 수학 점수 : ${math} </li> <li> 영어 점수 : ${eng} </li>
+            <li> 총점 : ${sum} </li> <li> 평균 : ${avg} </li> <li> 합격여부 : ${result}</li>`;
+            ol.innerHTML = str;
+        }
+    
+
+    </script>
+
+
+</body>
+</html>

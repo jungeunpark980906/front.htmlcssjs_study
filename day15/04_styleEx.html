@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>style예제</title>
+</head>
+<body>
+    <button type="button" id="ul한번에">Li Tag 한번에 추가</button>
+    <button type="button" id="ul순차적">Li Tag 순차적 추가</button>
+    <button type="button" id="ol한번에">Li Tag 한번에 추가</button>
+    <button type="button" id="ol순차적">Li Tag 순차적 추가</button>
+
+    <ul id="ul태그"></ul> 
+    <hr>
+    <ul id="ul태그2"></ul>
+    <hr>
+    <ol id="ol태그"></ol>
+    <hr>
+    <ol id="ol태그2"></ol>
+
+    <script>
+        let list = ['HTML','CSS','JavaScript','SQL'];
+        let cnt = 0;
+        
+        document.getElementById('ul한번에').addEventListener('click',()=>{
+            for(let i=0; i<list.length; i++){
+                document.getElementById('ul태그').innerHTML += `<li>${list[i]}</li>`;
+            }
+        })
+        
+        document.getElementById('ul순차적').addEventListener('click',()=>{
+            document.getElementById('ul태그2').innerHTML += `<li>${list[cnt]}</li>`;
+            cnt++;
+        })
+        
+        document.getElementById('ol한번에').addEventListener('click',()=>{
+            for(let i=0; i<list.length; i++){
+                let p = document.createElement('li');
+                document.getElementById('ol태그').appendChild(p).innerHTML += `<li>${list[i]}</li>`;
+            }
+        })
+        
+        document.getElementById('ol순차적').addEventListener('click',()=>{
+            let p = document.createElement('li');
+           
+            document.getElementById('ol태그2').appendChild(p);
+        })
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <h1 id="h1">h1</h1>
+    <ul>
+        <li class="list">list1</li>
+        <li class="list">list2</li>
+        <li class="list">list3</li>
+    </ul>
+
+    <script>
+        const h1 = document.getElementById('h1');
+        const list = document.getElementsByClassName('list');
+        const ul = document.getElementsByTagName('ul');
+
+        console.log(h1);
+        console.log(list);
+        console.log(ul);
+        // 번지로 따로 출력 가능
+        console.log(list[1]); //list의 1번지
+        console.log(ul[0]); //0번지 ul
+        //0번지 ul의 children = li태그의 개수
+        console.log(ul[0].children.length); // 3
+    </script>
+</body>
+</html>

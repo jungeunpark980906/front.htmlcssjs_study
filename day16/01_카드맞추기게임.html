@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카드게임</title>
+    <style>
+        table{
+            border-collapse: collapse;
+            border-spacing: 0;
+            margin: 100px auto;
+        }
+        table, td{
+            border: 2px solid lightseagreen;
+        }
+        .pic{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <button type="button" onclick="start();">start</button> -->
+    <table id="board">
+
+    </table>
+    <script>
+        let model = ["01케로린.png", "01케로린.png",
+                    "02노베른.png", "02노베른.png",
+                    "03치피.png", "03치피.png",
+                    "04테루테루.png", "04테루테루.png",
+                    "05고로피.png", "05고로피.png",
+                    "06케롯페.png", "06케롯페.png" ];
+
+        // 한번 순서대로 출력해봄
+        // function start(){
+        //     let tr = document.getElementById('board');
+        //     let str =" ";
+            
+        //     for(let i=0; i<model.length; i++){
+        //         str += `<td><img src="/image/${model[i]}" alt=${model[i]} class="pic"></td>`;
+        //     }
+        //     tr.innerHTML = str;
+        // }
+
+        window.addEventListener('load',function(){ //위도우가 새로고침 될때마다 새로 로드!
+            //모델 섞기
+            for(let i=0; i<10000; i++){
+                let ran = Math.floor(Math.random()*12); //카드의 개수만큼 곱
+                let tmp = model[0];
+                model[0]= model[ran];
+                model[ran]=tmp;
+            }
+
+            //화면에 출력
+            let board = document.getElementById('board');
+            let str =" ";
+            for(let i=0; i<model.length; i++){
+                str += 
+                `<td><input class='pic' type='image' src='/image/${model[i]}' value='${model[i]}'</td>`;
+            }
+            board.innerHTML = str;
+
+            //이미지의 투명도 조절
+            let pic = document.querySelectorAll('.pic');
+            setTimeout(function(){
+                for(let i=0; i<pic.length; i++){
+                    pic[i].style = 'opacity:0';
+                }
+            },1000); //1초후에 투명해짐
+
+
+            //이미지의 클릭에 반응
+            let count = 0;
+            let success = 0; // success값은 model.length/2까지만
+
+            let onePic = null;
+            let twoPic = null;
+            
+            for(let i=0; i<pic.length; i++){
+
+                pic[i].addEventListener('click',function(){
+                    this.style = 'opacity:1';
+                    count++;
+                    console.log(count);
+
+                    //첫번째, 두번째 선택 카드 저장
+                    if(count==1){
+                        onePic = this;
+                        console.log(onePic);
+                    } else if (count==2){
+                        twoPic = this;
+                        console.log(twoPic);
+                        
+                        // == 게임 진행 ==
+                        // 그림이 같은 경우
+                        if(onePic.value == twoPic.value){
+                            success ++;
+                            
+                            if(success == model.length/2){
+                                alert('모두 맞추셨습니다! 성공!');
+                                
+                                //클릭이벤트 종료
+                                // event.stopPropagation(); //부모에게(상위) 이벤트도 함께 종료 (상위 엘리먼트의 이벤트 전파를 중단)
+                                event.preventDefault(); //나(현재)의 이벤트만 종료
+                            }
+                            
+                            // 그림이 다를 경우
+                        } else {
+                            setTimeout(function(){
+                                console.log(onePic,twoPic);
+                                onePic.style = 'opacity:0';
+                                twoPic.style = 'opacity:0';
+                            },300); //0.3초뒤 다시 가리기
+                        }
+                        
+                        count = 0; //카운트 리셋
+                    }
+
+                })
+            }
+
+
+
+
+        })
+    
+    </script>
+</body>
+</html>

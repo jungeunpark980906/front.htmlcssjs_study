@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수사용</title>
+    <!-- 자바스크립트 변수
+        - 값을 담고 있는 메모리 공간의 이름
+        -  -->
+</head>
+<body>
+    <script>
+        // var name = "hong";
+        // console.log(name);
+        // var name = "kim";
+        // console.log(name);
+
+        let name = "jung";
+        // console.log(name);
+        // var name이 있기때문에 에러
+
+        name = "lee";
+        console.log(name);
+        // 값 재할당 가능
+        // if(erer){
+        //     let name = "hong";
+        // };
+        // 재선언 가능 (유효하지 않은 범위안)
+
+        const tname = "hong";
+        console.log(tname);
+        // tname = "kim";
+        // 불가능
+
+        console.log(typeof name);
+
+        let age = 20;
+        console.log(age);
+        console.log(age+"세");
+        let address = "seoul";
+        let hobby = "computer";
+        console.log("이름: ", name);
+
+        console.log(`주소: `, address);
+        console.log(`취미: ${hobby}`);
+
+    </script>
+</body>
+</html>

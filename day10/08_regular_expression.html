@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규표현식</title>
+</head>
+<body>
+    <script>
+        let testText = 'This is Javascript Regular Expression';
+        // 전체에서 la가 포함된 것을 배열로 출력
+        console.log(testText.match(/[la]/g)); // l과 a 추출
+        console.log(testText.match(/la/g)); // la 추출
+        console.log(testText.match(/is/g)); // is 추출
+
+        const fileName = ['abc.jpg', 'main.gif', 'doc.pdf', 'movie.mpg', 'code.js'];
+        // 배열을 탐색해 하나의 문자열에 png, jpg, jpeg, gif가 있는지 확인 출력
+        for(const file of fileName){
+            if(file.match(/(jpg|jpeg|png|gif)/i)){
+                console.log(`이미지 파일 : ${file}`);
+            } else {
+                console.log(`그외 파일: ${file}`);
+            }
+        }
+    </script>
+</body>
+</html>

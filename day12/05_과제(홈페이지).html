@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사진변경 홈페이지</title>
+    <style>
+    body{
+        text-align: center;
+    }
+    h1{
+        border: 5px solid black;
+        margin: 30px auto;
+        height: 50px;
+        width: 12%;
+    }
+    ul>li{
+        list-style: none;
+        display: inline;
+        margin-right:20px;
+    }
+    ul{
+        list-style: none;
+        width: 50%;
+        margin: 10px auto;
+    }
+    div>img{
+        margin-top: 30px;
+        width: 50%;
+        height: 30%;
+        /* background-size: cover;
+        background-repeat: no-repeat; */
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Travle</h1>
+    <ul>
+        <li><a id="home" class="link" onclick="clickCity(this)">Home</a></li>
+        <li><a id="Seoul" class="link" onclick="clickCity(this)">Seoul</a> </li>
+        <li><a id="Tokyo" class="link" onclick="clickCity(this)">Tokyo</a> </li>
+        <li><a id="Paris" class="link" onclick="clickCity(this)">Paris</a> </li>
+    </ul>
+    <div id="image">
+    </div>
+    
+
+
+    <script>
+      function clickCity(e){
+        let city = e.id;
+        console.log(city);
+
+        let str=" ";
+            switch(city){
+                case 'home': str = `<img src="/image/냥비행기.jpg" alt="사진 없음">`; break;
+                case 'Seoul': str = `<img src="/image/서울.webp" alt="사진 없음">`; break;
+                case 'Tokyo': str = `<img src="/image/도쿄.webp" alt="사진 없음">`; break;
+                case 'Paris': str = `<img src="/image/파리.webp" alt="사진 없음">`; break;
+            }
+            document.getElementById('image').innerHTML = str;
+      }
+    </script>
+</body>
+</html>

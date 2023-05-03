@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count 만들기</title>
+    <!-- 더하기 누르면 +1, 빼기 누르면 -1 (최소는0) -->
+</head>
+<body>
+    <button type="button" id="plus">더하기</button>
+    <button type="button" id="miu">빼기</button>
+    <button type="button" onclick="window.location.reload();">리셋</button>
+    <h1 id="print"></h1>
+    <h1 id="number">0</h1>
+    
+    <!-- 나 -->
+    <script>
+        let num = 0;
+        let str = " ";
+
+        document.getElementById('plus').addEventListener('click',()=>{
+            if(num > 99){
+                alert(`최대수량입니다. 현재 수량: ${num}`);
+            } else {
+                num++; 
+                str = `현재수량: ${num}`
+            }
+            document.getElementById('print').innerText=str;
+        })
+        
+        document.getElementById('miu').addEventListener('click',()=>{
+            if(num  < 1){
+                alert(`최소수량입니다. 현재 수량: ${num}`);
+            } else {
+                num--;
+                str = `현재수량: ${num}`;
+            }
+            document.getElementById('print').innerText=str;
+        })
+    </script>
+    
+    <!-- 선생님 -->
+    <script>
+        const number = document.getElementById('number');
+        const incre = document.getElementById('incre');
+        const decre = document.getElementById('decre');
+
+        incre.addEventListener('click',function(){
+            let currVal = Number(number.innerText);
+            number.innerText = currVal +1;
+        })
+        decre.addEventListener('click',function(){
+            let currVal = Number(number.innerText);
+            if(currVal <= 0){
+                number.innerText = 0;
+            } else {
+                number.innerText = currVal - 1;
+            }
+        })
+    </script>
+</body>
+</html>

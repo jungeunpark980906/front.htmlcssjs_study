@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event</title>
+</head>
+<body>
+    <button type="button" onclick="javascript:evenFunc();">클릭1</button>
+    <button onclick="evenFunc2(100);">클릭2</button>
+    <button type="button" onclick="javascript:evenFunc3()">클릭3</button>
+    <!-- type 사용은 선택 -->
+    <button type="button" onclick="alert('경고창띄우기')">alert</button>
+    <button type="button" id="testBtn">test</button>
+    <button type="button" id="ticket">ticket</button>
+    <h1 id="printResult">
+
+    </h1>
+    <script>
+        function evenFunc(){
+            let printResult = document.getElementById('printResult');
+            printResult.innerText = '클릭1 버튼을 클릭하면 이 글자가 나타남';
+        }
+        function evenFunc2(num){
+            let printResult = document.getElementById('printResult');
+            printResult.innerHTML = `<span style="color:blue;">span태그 사용. ${num} </span>`+num;
+        }
+        function evenFunc3(){
+            let printResult = document.getElementById('printResult');
+            printResult.innerHTML = '<p style="font-size:70px;"> 사이즈 70인 p! </p>';
+        }
+    </script>
+    <script>
+        document.getElementById('testBtn').addEventListener('click',() => {
+            alert('test버튼을 클릭해 띄운 alert')
+        })
+        document.getElementById('ticket').addEventListener('click',() => {
+            alert('티켓 당첨입니당~!')
+        })
+
+   
+    </script>
+</body>
+</html>

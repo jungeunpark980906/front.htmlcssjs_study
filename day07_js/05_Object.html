@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체</title>
+</head>
+<body>
+    <h1>객체</h1>
+    <script>
+        const car = {name:'myCar',year:2023};
+        // car = 100; 재할당 불가능 = car 객체의 지속성을 확보하기 위해서
+        let car2 = {name:'superCar', year:2023};
+        car2 = 100; 
+        // let은 재할당이 가능하지만, car2의 객체는 사라짐 
+        // = 객체를 활용하고자하는 목적이 사라짐
+    </script>
+    <script>
+        const me = {
+            lastName : 'park',
+            firstName : 'jungeun',
+            age : 26,
+            addr : 'incheon',
+            isDeveloper : true,
+            'hobby' : 'game',
+            'myFavor' : '간식',
+            // 따옴표 사용도 가능!
+            avail:{
+                year:2023,
+                title:'javascript',
+                ver:'ES6+',
+                project:'Back-end',
+                intro: function(){
+                    console.log(`${me.avail.title}:${me.avail.ver}=${me.avail.project}`);
+                    return `re:${this.title} : ${this.ver} = ${this.project}`;
+                    // this는 현재의 나!
+                }
+            },
+            year : 2023
+        };
+        // 세미콜론 ; 의 유무는 선택
+        
+        // 전체 데이터 추출
+        console.log(me);
+        // 원하는 데이터 추출
+        console.log(me.addr); // incheon
+        console.log(me.year); // 2023
+        console.log(me.avail.project); // Back-end
+        console.log(me.avail.title); // javascript
+        console.log(me.avail.intro); // 함수 실행이 아닌 지목!
+        console.log(me.avail.intro()); // 함수 실행(invoke:호출실행)
+
+        console.log('---------------------------------------');
+
+        console.log(me['addr']);
+        console.log(me['hobby']);
+        console.log(me['avail']['title']);
+        console.log(me['avail']['intro']());
+
+        console.log('---------------------------------------');
+
+        let keyName = 'firstName';
+        console.log(me[keyName]); // jungeun = me['firstName']과 동일
+
+        keyName = 'age';
+        console.log(me[keyName]); // 26 = me['age']와 동일
+        
+        console.log('---------------------------------------');
+        
+        // 혼용 가능
+        console.log(me.avail['title']);
+        console.log(me['avail'].ver);
+
+    </script>
+
+    <script>
+        // 객체 생성 : 좋아하는 뮤지션(가수)의 플레이 리스트 3곡 
+        // 이름, 나이, 플레이리스트(객체로), 함수(플레이리스트의 곡3개 출력함수)
+        const singer = {
+            name : '헤이즈',
+            age : 31,
+            playlist : {
+                list1 : '널 너무 모르고',
+                list2 : '저 별',
+                list3 : '첫눈에'
+            },
+            into : function(){
+                console.log(`${singer.name}의 노래 : 1.${singer.playlist.list1}, 2.${singer.playlist.list2}, 3.${singer.playlist.list3}`);
+                return `노래: ${this.playlist.list1}, ${this.playlist.list2}, ${this.playlist.list3}`;
+            },  
+            into2 : function(list1, list2, list3){
+                console.log(`${this.playlist.list1}, ${this.playlist.list2}, ${this.playlist.list3}`);
+                return `re: ${list1},  ${list2},  ${list3}`; 
+            }
+        }
+        // 전체 출력
+        console.log(singer);
+        // 함수 출력
+        console.log(singer.into()); // 리턴 출력
+        console.log(singer.into); // 함수 출력(지목)
+        // 가수 이름 출력
+        console.log(singer.name);
+        console.log(singer['name']);
+        // 가수의 첫번째 노래 출력
+        console.log(singer['playlist'].list1);
+        console.log(singer.playlist['list1']);
+
+        //함수에 다른 이름을 넣어보기
+        console.log(singer.into2('aaa','bbb','ccc'));
+
+    </script>
+</body>
+</html>

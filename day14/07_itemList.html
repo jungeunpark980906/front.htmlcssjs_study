@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여행준비물 점검 목록</title>
+    <style>
+        @font-face {
+            font-family: 'KCCChassam';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCCChassam.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            }  
+        body{
+            font-family: 'KCCChassam';
+            
+        }
+        form{
+            width: 500px;
+            margin: auto;
+            margin-bottom: 0;
+            text-align: center;
+        }
+        h1{
+            text-align: center;
+        }
+
+
+        /* 입력받는 부분  */
+        div>form{
+            padding: 30px;
+            background-color: lightblue;
+            border-radius: 20px;
+        }
+        /* 작성 박스 */
+        #list{
+            width: 400px;
+            height: 50px;
+        }
+        /* 추가 버튼 */
+        #add{
+            width: 50px;
+            height: 50px;
+            background-color: rgb(242, 249, 252);
+            border-radius: 10px;
+            border-color: aliceblue;
+        }
+        #add:hover{
+            background-color: rgb(7, 247, 255);
+        }
+
+        
+
+        /* 리스트 */
+        ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            line-height: 50px;
+        }
+        ul>li{
+            position: relative;
+            margin: auto;
+            width: 560px;
+            height: 50px;
+            border-radius: 10px;
+            padding-left: 5px;
+        }
+      
+        ul>li:nth-child(odd){
+            background-color: rgb(249, 255, 231);
+        }
+        ul>li:nth-child(2n){
+            background-color: aliceblue;
+        }
+        ul button{
+            position: absolute;
+            right: 5px;
+            top: 10px;
+            border-radius: 10px;
+            border: 0;
+            width: 30px;
+            height: 30px;
+            background-color: transparent;
+        }
+ 
+
+      
+    </style>
+</head>
+<body>
+    <div>
+        <h1>여행 준비물 점검 목록</h1>
+        <form action="">
+        <input type="text" id="list" autofocus="true">
+        <button type="button" id="add">추가</button>
+        </form>
+        <div id="itemList">
+            <ul id="ul"></ul>
+        </div>
+    </div>
+
+    <script>
+        const printItemList = document.getElementById('itemList');
+        let itemList = [];
+
+        //추가버튼
+        document.getElementById('add').addEventListener('click',()=>{
+            printList(addList());
+        })
+
+        //삭제버튼
+        function deletList1(i){
+            itemList.splice(i,1); //i 자리에 1개 삭제
+            printList(itemList);
+        }
+
+        
+        //추가
+        function addList(){
+            let list = document.getElementById('list').value;
+            itemList[itemList.length] = list;
+            document.querySelector('#list').value = ""; // 값이 추가된 후 공백으로 값 초기화
+            document.querySelector('#list').focus(); // 추가된 후 포커스 (깜빡깜빡) 
+            return itemList;
+        }
+
+        //출력
+        function printList(list){
+            let str = " ";
+            str += `<ul>`;
+            for(let i=0; i<list.length; i++){
+                str += `<li>${list[i]}`;
+                str += `<button type="button" onclick="deletList1(${i});">X</button></li>`;
+            }
+            str += `</ul>`;
+            printItemList.innerHTML = str;
+        }
+
+
+
+    </script>
+
+
+</body>
+</html>

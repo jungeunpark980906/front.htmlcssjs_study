@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>요일구하기</title>
+</head>
+<body>
+    <h1>오늘은?</h1>
+    <button type="button" onclick="today();">Today</button>
+    <h3 id="print">
+        <!-- 오늘날짜와 요일 출력 ( 2023-04-13(목) ) -->
+    </h3>
+    <script>
+        function today(){
+            let today = new Date();
+            //연도
+            let year = today.getFullYear();
+            //월
+            let month = today.getMonth()+1;
+            //일
+            let date = today.getDate();
+            //요일
+            let week = today.getDay();
+            switch(week){
+                case 0: finalWeek="일"; break;
+                case 1: finalWeek="월"; break;
+                case 2: finalWeek="화"; break;
+                case 3: finalWeek="수"; break;
+                case 4: finalWeek="목"; break;
+                case 5: finalWeek="금"; break;
+                case 6: finalWeek="토"; break;
+            };
+
+            document.getElementById('print').innerText = 
+            `${year}-${month}-${date} (${finalWeek})`;
+        }
+
+    </script>
+</body>
+</html>

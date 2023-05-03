@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비표준 속성</title>
+</head>
+<body>
+    <li class="list" data-ino="li_last" data-itemCategory="litop"></li>
+    <script>
+        let li_last_tag = document.querySelectorAll('.list');
+        console.log(li_last_tag); //NodeList
+        console.log(li_last_tag[0].dataset.ino); //0번지의 ino값 : li_last
+
+        let liLast = li_last_tag[0].dataset.ino; //0번지의 ino값 : li_last
+        console.log(liLast); 
+
+        console.log(li_last_tag[0].dataset.itemcategory); 
+        // 대문자로 작성해도 소문자로 읽음 = 소문자 작성하세요(대문자x)
+        // 0번지의 itemcategory값: litop
+
+       
+    </script>
+</body>
+</html>

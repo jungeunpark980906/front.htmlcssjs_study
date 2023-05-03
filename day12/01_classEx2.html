@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>생성자 함수</title>
+</head>
+<body>
+    <h1>
+        클래스, 리터럴 객체(리턴할수있는객체), 생성자 함수를 통해 객체 생성
+    </h1>
+    <script>
+
+        //클래스 생성 - 리터럴 객체(비어있는객체) 생성 - 생성자 함수 생성
+        //정의할 프로퍼티(멤버변수) : firstName., lastName, age, address
+        //메서드 : 함수를 호출하면 프로퍼티의 값이 출력 (toString같은 개념)
+        
+        
+        class Make{
+            // 생성자
+            constructor(firstName,lastName,age,address){
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.age = age;
+                this.address = address;
+            }
+            //출력메서드
+            toString(){ 
+                // console.log(this.firstName,this.lastName,this.age,this.address);
+                return `${this.firstName}, ${this.lastName}, ${this.age}, ${this.address}`;
+            }
+            //get
+            get toString1(){ 
+                return `${this.firstName}, ${this.lastName}, ${this.age}, ${this.address}`;
+            }
+
+        }
+        
+        //class로 객체생성, 출력
+        let human1 = new Make('박','정은',26,'인천');
+        
+        //human1.toString(); //사용가능
+        console.log(human1); //Make
+        console.log(human1.toString()); //메서드는 ()괄호 (박,정은,26,인천)
+        console.log(human1.toString1); //get은 이름만  (박,정은,26,인천)
+        console.log('-------------------------------');
+        
+//----------------------------------------------------------------------------------------------
+
+        //생성자함수 (get X)
+        function User(firstName, lastName, age, address){
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.age = age;
+            this.address = address;
+            this.print1 = function(){
+                // console.log(this.firstName,this.lastName,this.age,this.address);
+                return `${this.firstName}, ${this.lastName}, ${this.age}, ${this.address}`;
+            }
+            
+        }
+        
+        //생성자함수로 생성, 출력
+        let human2 = new User('밥','다래','1','영국');
+        // human2.print1(); //사용가능 (밥 다래 1 영국)
+        console.log(human2); //User
+        console.log(human2.print1()); // (밥, 다래, 1, 영국)
+        console.log('-------------------------------');
+
+//-------------------------------------------------------------------------------------------------
+
+        const person = {
+            firstName: "",
+            lastName: "",
+            age: "",
+            address: "",
+            //set함수
+            setInfo: function(firstName,lastName,age,address){
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.age = age;
+                this.address = address;
+            },
+            //get
+            get personInfo(){
+                return `${this.firstName}, ${this.lastName}, ${this.age}, ${this.address}`;
+            },
+            //set
+            set setFirstName(first){
+                this.firstName = first;
+            }
+        }
+
+        person.setInfo('박','희은',23,'수원');
+        console.log(person); //setInfo 출력
+    
+
+    </script>
+</body>
+</html>

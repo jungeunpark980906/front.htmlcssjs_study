@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열</title>
+</head>
+<body>
+    <h1>
+        자바스크립트의 배열은 유동배열 : 크기와 데이터의 변경이 가능
+    </h1>
+    <h4>
+        const myArray = [1, 2, 3, 'a', 'b']; //잘 사용하지 않지만 혼용도 가능
+        원래 배열안에 데이터 타입을 같게하는 것이 규칙
+        (원래 배열은 같은 데이터 타입만 원소로 사용하는 것이 원칙)
+        but 자바 스크립트에서는 허용
+
+        myArray=[];
+        : 초기값이 없는 빈 배열을 만든 후, 데이터 추가해 사용 가능 (arraylist같이)
+        
+        각 데이터들은 콤마(,)로 분리되고, 분리된 자료는 index를 가진다(0부터)
+        .length(길이) : 총길이 확인
+
+        const로 배열을 선언하면 배열의 값을 변경할 수는 있으나, 배열 자체를 변경할 수 는 없음(객체 등)
+
+       
+    </h4>
+
+    <script>
+        // const myArray = new Array['a', 1, 2]; // 가급적 사용x
+        const myArray1 = ['a', "b",'c', 1, 2, 3];
+        console.log(myArray1); //전체 출력
+        console.log(myArray1.length); //5
+        console.log(myArray1[2]); // c
+        console.log(myArray1[myArray1.length-1]); // 마지막 배열 값 3
+
+        myArray1[6]=4; //배열의 6번지에 4 추가
+        myArray1[myArray1.length]='add'; //배열의 가장 끝에 5 추가
+        myArray1[myArray1.length+3] = 'new'; //배열의 가장끝에서 +3위치에 추가 (이때 배열의 빈 요소는 undefined)
+        console.log(myArray1);
+
+    </script>
+
+    <script>
+        // for문을 이용해서 배열 출력
+        for(let i=0; i<myArray1.length; i++){
+            console.log(myArray1[i]);
+        }
+
+        // 유사배열(연관배열) : associative Array 여러 타입을 섞어쓰는 배열 > 배열 관련 메서드 중 사용할 수 없는 것들이 있음
+        let assocArrayType = [1, true, 'hong', undefined, {k: 'value'}, ['k','g']];
+        
+        //전체 출력
+        console.log(assocArrayType);
+        for(let i=0; i<assocArrayType.length; i++){
+            console.log(assocArrayType[i]);
+        }
+        for(let i=0; i<assocArrayType.length; i++){
+            if( i == 4){
+                console.log(assocArrayType[i].k); //k,g 따로보기
+            } else {
+                console.log(assocArrayType[i]);
+            }
+        }
+
+
+    </script>
+</body>
+</html>

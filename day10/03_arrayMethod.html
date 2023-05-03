@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열 관련 메서드</title>
+</head>
+<body>
+    <h1>배열관련 메서드 : 유사(연관)배열 에서는 사용제한이 있음</h1>
+     <h4>
+        1. join() 
+        : 배열 원소 사이에 문자를 삽입하여 새로운 문자열을 생성
+       
+        2. push(value) 
+        : 배열의 마지막에 value를 추가 => push 후 배열의 길이를 리턴
+         (array[array.length]=value;와 동일 효과)
+
+        3. unshift(value) 
+        : 배열의 가장 앞에 원소를 추가 => 추가 후 배열 길이 리턴
+
+        4. pop() 
+        : 배열의 마지막 원소 제거 => 제거한 원소의 값 리턴
+
+        5. shift()
+        : 배열의 첫 원소를 제거 => 제거한 원소의 리턴
+
+     </h4>
+
+     <script>
+        const ourClass = [];
+        ourClass[ourClass.length] = '정은';
+        ourClass[ourClass.length] = '수정';
+        ourClass[ourClass.length] = '다래';
+        ourClass[ourClass.length] = '요비';
+        console.log(ourClass); // 0:정은 1:수정 2:다래 3:요비
+
+        // push() : 맨뒤 추가
+        ourClass.push('동글'); 
+        console.log(ourClass); // 0정은 1:수정 2:다래 3:요비 4:동글
+        ourClass.push({n:10, m:'F'}); 
+        console.log(ourClass); // 0정은 1:수정 2:다래 3:요비 4:동글 5:{n:10, m:'F'} (5번으로 배열길이는 6!)
+        console.log(ourClass.push('빵빵')); // 7 (빵빵 추가 후 배열의 길이)
+        
+        // pop() : 맨뒤 삭제
+        ourClass.pop(); // 빵빵 삭제
+        console.log(ourClass);
+
+        // unshift() : 맨앞 추가
+        ourClass.unshift('빙글'); 
+        console.log(ourClass); //'빙글', '정은', '수정', '다래', '요비', '동글', {n:10, m:'F'}
+
+        // shift() : 맨앞 삭제
+        ourClass.shift();
+        console.log(ourClass); //'정은', '수정', '다래', '요비', '동글', {n:10, m:'F'}
+     </script>
+</html>

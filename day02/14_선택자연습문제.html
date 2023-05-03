@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #google {
+            color: blue;
+        }
+        #google:hover {
+            color: rgb(190, 32, 252);
+            background-color: cadetblue;
+        }
+        body > div {
+            font-weight: 700;
+            font-style: italic;
+        }
+        html div{
+            font-weight: 100;
+        }
+        a{
+            text-decoration: none;
+        }
+        a:visited {
+            color: aqua;
+        }
+        a:active{
+            color: black;
+        }
+        /* a태그는 링크를 클릭했는지에따라 글자의 색이 변함
+        즉, a태그의 선택자는 가상선택자(의사선택자)를 사용해 변경해도 됨
+        a:active 클릭할 경우의 색 (단,active가 visited보다 뒤에 위치해 있어야함)
+        a:visited 링크를 눌러본 후 색 */
+        ul {
+            font-size: 20px;
+        }
+        ul>li:nth-child(even){
+            color: red;
+        }
+        ul>li:nth-child(3n){
+            color: green;
+        }
+        li:first-child, li:last-child{
+            font-weight: 900;
+        }
+        li::after{
+            content: "번째";
+        }
+        li::before{
+            content: "li태그";
+        }
+  
+
+    </style>
+    <link rel="stylesheet" href="/day02/style.css">
+
+</head>
+<body>
+    <!-- div 3개를 만들어 네이버,구글,다음에 연결
+    네이버는 초록, 구글은 파랑, 다음은 노랑으로 다른 스타일 적용
+     -->
+    <div><a href="http://naver.com" style="color: green;">네이버
+        <img src="/image/냥4.jpg" alt="" width="100px"></a></div>
+    <div><a href="http://google.com" id="google">구글
+        <img src="/image/냥5.jpg" alt="" width="100px"></a></div>
+    <div><a href="http://daum.net" id="daum" class="daum">다음
+        <img src="/image/냥6.jpg" alt="" width="100px"></a></div>
+    
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+   
+</body>
+</html>

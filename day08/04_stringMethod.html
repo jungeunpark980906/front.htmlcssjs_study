@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String_method</title>
+</head>
+<body>
+    <h1>String</h1>
+    <script>
+        let str = "apple, banana, orange";
+        let startIndex = 0;
+        let endIndex = 5;
+        // 마지막 endIndex는 미포함됨.
+
+        console.log(str.slice(startIndex, endIndex)); //apple
+        console.log(str.substring(startIndex, endIndex)); //apple
+        // slice와 substring 사용방법 동일
+        console.log(str.slice(7)); //apple, banana
+        // index부터 끝까지 출력
+        console.log(str.slice(-6)); //orange
+        // -입력시, 뒤에서 부터 추출
+
+        console.log(str.substr(0,5)); //apple
+        // 0번지부터 5개 추출
+
+        let text = "Hello Java World! java";
+        let newText = text.replace("Java", "Javascript"); // Hello Javascript World! java
+        console.log(newText);
+
+        newText = text.replace(/JAVA/i, "Javascript"); 
+        console.log(newText); // Hello Javascript World!
+        // 대소문자 구분X
+
+        newText = text.replace(/JAVA/g, "Javascript"); 
+        console.log(newText); // Hello Java World! java
+        // 문자열 전체에 적용
+
+        newText = text.replace(/JAVA/ig, "Javascript"); 
+        console.log(newText); // Hello Javascript World! Javascript
+        // 대소문자 구분없이 문자열 전체에 적용
+
+        let trimtext = "      trim check   ";
+        console.log(trimtext.trim()); //trim check
+
+        let padText = "abc";
+        console.log(padText.padStart(5,'*')); // **abc
+        console.log(padText.padEnd(10,'-')); // abc-------
+        
+        let num = '980906-2000000'
+        
+        // 주민등록번호의 길이
+        let numLength = num.length;
+        console.log(numLength); // 14
+        
+        // 980906-2****** 출력
+        console.log(num.replace(num.slice(8),'******'));
+        console.log(num.slice(0,8).padEnd(num.length,'*'));
+        
+        // 주민등록번호로 남/여 구분
+        if(num.substr(7,1)%2 == 0 ){ 
+            // num.charAt(num.indexOf("-")+1); 동일
+            console.log('여자');
+        } else {
+            console.log('남자');
+        }
+
+        console.log( (num.charAt(7)%2==0)? '여자':'남자');
+
+
+       //-----------------------------------------------------------
+
+       let fullFileName = "20230413_javascript.string_method.html";
+       // 파일명 추출
+        console.log(fullFileName.substring(fullFileName.indexOf('.')+1,fullFileName.lastIndexOf('.')));
+       // 파일 작성일자 추출
+        console.log(fullFileName.slice(0,fullFileName.indexOf('_')));
+       // 확장자 추출
+       console.log(fullFileName.slice(fullFileName.lastIndexOf('.')+1));
+
+       //-------------------------------------------------------------------------------
+    </script>
+</body>
+</html>

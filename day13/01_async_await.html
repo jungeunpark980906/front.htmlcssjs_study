@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async await</title>
+</head>
+<body>
+    <button type="button" id="btn">데이터 불러오기</button>
+
+    <script>
+        document.getElementById('btn').addEventListener('click',()=>{
+            async function awaitEx(){
+                try{
+                    const resp = await fetch('https://jsonplaceholder.typicode.com/todos/1'); // resp = response 응답
+                    // 받아서 저장하는 경우 ) 원하는 사용에 따라 text(),json()으로 저장!
+                    const result = await resp.text(); // 1. resp를 text로 받아 저장 -> type = string
+                    const result1 = await resp.json(); // 2. resp를 json로 받아 저장 -> type = object
+                    // let j = JSON.parse(result); // +3. 또는 text로 받아 json으로 변경도 가능
+                    
+                    console.log(result); // 1. 바로 출력하는 방법
+                    // return result; //2. 리턴으로 넣고
+
+                    //단!! 비교해야하는 if문 을 이용하려면 밖에서 말고 안에서 꼭 해줘야함
+
+                }catch(err){
+                    console.log(err);
+                } finally {
+                    console.log('await finish')
+                }
+            }
+            //실행
+            awaitEx();
+
+            // console.log(result); // 2. 밖에서 출력하는 방법
+
+        })
+    </script>
+</body>
+</html>

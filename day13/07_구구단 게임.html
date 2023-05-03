@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구구단 맞추기</title>
+</head>
+<body>
+    <h3>
+        문제는 10문제 출제 <br>
+        맞추면 blue / 틀리면 pink <br>
+        정답률도 프린트
+    </h3>
+    <button type="button" id="start">문제 출제</button>
+    <ol id="q"></ol>
+    <button type="button" id="end">정답!</button>
+    <h3 id="result"></h3>
+    <script>
+        // 랜덤 단
+        function makeDan(){
+            return Math.floor(Math.random()*8)+2;
+        }
+        // 랜덤 곱할 숫자
+        function makeNum(){
+            return Math.floor(Math.random()*9)+1;
+        }
+        
+        let comAns = []; //정답을 담는 배열 생성
+        let printQuiz = document.getElementById('q');
+        //문제 출제
+        document.getElementById('start').addEventListener('click',()=>{
+            let str=" ";
+            for(let i=0; i<10; i++){
+                let dan = makeDan();
+                let num = makeNum();
+                comAns[i] = dan*num;
+                str += `<li> ${dan} X  ${num} = <input type="text" id="userAns${i}"></li>`;
+            }
+            printQuiz.innerHTML = str;
+        })
+        //결과 출력 (비교)
+        document.getElementById('end').addEventListener('click',()=>{
+            let scorePoint = 0; //정답 수
+            let scoreRate = 0; // 정답률
+            for(let i=0; i<10; i++){
+                let userAns = Number(document.getElementById(`userAns${i}`).value);
+                if(userAns == comAns[i]){
+                    document.getElementById(`userAns${i}`).value = `${comAns[i]} : 정답! `;
+                    document.getElementById(`userAns${i}`).style.backgroundColor = 'aliceblue';
+                    scorePoint++;
+                } else {
+                    document.getElementById(`userAns${i}`).value = `${comAns[i]} : 오답 `;
+                    document.getElementById(`userAns${i}`).style.backgroundColor = 'pink';
+                }
+            }
+            scoreRate = ((scorePoint/comAns.length)*100).toFixed(2);
+
+            document.getElementById('result').innerText = `정답수: ${scorePoint}개 / 정답률 : ${scoreRate}% `;
+        })
+    </script>
+</body>
+</html>

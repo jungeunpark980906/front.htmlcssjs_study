@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map 예제</title>
+    <!-- input :  과목, 점수를 받기
+        추가버튼 : map에 추가
+        출력버튼 : map을 출력 (ul-li로 출력)
+        결과버튼 : 합계, 평균, 합격여부 (60이상 합격) 출력-->
+</head>
+<body>
+
+    과목 : <input type="text" name="" id="sub"> <br>
+    점수 : <input type="text" name="" id="score"> <br> <hr>
+    <button type="button" id="add">추가버튼</button>
+    <button type="button" id="print">출력버튼</button>
+    <button type="button" onclick="result();">결과버튼</button>
+
+    <!-- 출력버튼 출력 -->
+    <h3>
+    <ul id="print1"></ul>
+    </h3>
+    <!-- 결과버튼 출력 -->
+    <h3 id="result1"></h3>
+
+    <script>
+        
+        const myScore = new Map();
+        
+        // 추가버튼
+        document.getElementById('add').addEventListener('click',function(){
+            let sub = document.getElementById('sub').value;
+            let score = parseInt(document.getElementById('score').value);
+            myScore.set(sub, score);
+            document.getElementById('print1').innerText = `${sub} : ${score}점 추가되었습니다`;
+        })
+        
+        // 출력버튼
+        document.getElementById('print').addEventListener('click',()=>{
+            let str =" ";
+
+            for(const k of myScore.entries()){
+                str += `<li> ${k}점 </li>`;
+            }
+
+            // myScore.forEach(function(value, key){
+            //     str += `<li>과목: ${key} / 점수: ${value} </li>`;
+            // })
+
+            document.getElementById('print1').innerHTML = str;
+        })
+
+        // 결과버튼
+        function result() {
+            let sum = 0;
+            let avg = 0;
+            let pass = "";
+
+            // 합계
+            for(const v of myScore.values()){
+                sum += v;
+            }
+            
+            // 평균
+            avg = (sum / myScore.size).toFixed(2);
+            
+            // 합격여부
+            if(avg >= 60){
+                pass = '합격';
+            }else{
+                pass = '불합격';
+            }
+            // pass= (avg>=60)? '합격' : '불합격';
+
+            document.getElementById('result1').innerText = `합계: ${sum}, 평균: ${avg}, 합격여부: ${pass}`;
+        }
+
+
+    </script>
+</body>
+</html>

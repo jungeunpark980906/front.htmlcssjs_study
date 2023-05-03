@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>history 객체</title>
+</head>
+<body>
+    <!-- a태그를 이용하여 01_setTimeout.html로 이동 (1번페이지)
+        1번 페이지 -> 2번 페이지 로 이동
+        2번 페이지 -> 4번 페이지 로 이동
+        4번 페이지 -> 5번 페이지 로 이동할 수 있도록 생성
+        (01, 02, 03, 04 페이지에 설정) -->
+
+    <a href="/day14/01_setTimeout.html" id="move">01_setTimeout.html로 이동 </a> <br>
+    <button type="button" id="back">back</button>
+    <button type="button" id="foword">forword</button>
+    <!-- 숫자를 받아서 그 숫자로 이동 -->
+    <input type="text" id="n"> 
+    <button type="button" id="go">go(n)</button>
+    
+    <script>
+        document.getElementById('back').addEventListener('click',()=>{
+            history.back();
+        })
+        document.getElementById('forword').addEventListener('click',()=>{
+            history.forward();
+        })
+        document.getElementById('go').addEventListener('click',()=>{
+            history.go(parseInt(document.getElementById('n').value));
+        })
+    </script>
+</body>
+</html>

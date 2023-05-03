@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>list</title>
+</head>
+<body>
+    <!-- list태그 -->
+    <!-- 
+        : 상/하 목록으로 구성되어 있는 상황을 나타낼때 사용
+        - ol : 순서가 있는 리스트 (번호 표현)
+        - ul : 순서가 없는 리스트 (모양 표현)
+            - li : 태그안에서 하위목록 표시
+                (li*5 = li가 5개 생성)
+                (alt누르고 다중클리기 한번에 변경가능)
+        ol태그
+            type : 숫자의 형태를 정해주는 속성
+            기본 1 , A a i I
+            start : 시작 숫자 설정
+        ul태그
+            type : 기호의 현태를 정해주는 속성
+            desc : 기본형 ●
+            circle : ○
+            square : ■
+        메뉴바를 구성할 때 메인메뉴 -> 서브메누 구분시 사용
+     -->
+     <div>
+        오늘의 할일
+        <ol type="A" start="2">
+            <li>등교</li>
+            <li>수업1</li>
+            <li>수업2</li>
+            <li>수업3</li>
+            <li>수업4</li>
+            <li>수업5</li>
+        </ol>
+        점심메뉴
+        <ul type="square">
+            <li>라멘</li>
+            <li>돈까스</li>
+            <li>라면</li>
+            <li>김밥</li>
+            <li>부대찌개</li>
+        </ul>
+     </div>
+
+     <ul>
+        <li>오늘의 할일</li>
+        <ol>
+            <li>출근</li>
+            <li>점심</li>
+            <li>퇴근</li>
+        </ol>
+        <li>저녁메뉴</li>
+        <ol>
+            <li>밥</li>
+            <li>면</li>
+            <li>빵</li>
+        </ol>
+        </ul>
+</body>
+</html>

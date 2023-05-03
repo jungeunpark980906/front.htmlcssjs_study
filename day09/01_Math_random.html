@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math & Random </title>
+</head>
+<body>
+    <h1>수학 관련 함수</h1>
+    <script>
+        //1~10 까지의 랜덤 수 생성
+        let num = Math.floor(Math.random()*10)+1;
+        console.log(num); 
+
+        function getRandom(min,max){
+            return Math.floor(Math.random()*(max-min+1))+min;
+        }
+        console.log(getRandom(1,20)); //1~20 
+    </script>
+
+    <script>
+        console.log(String(true), typeof String(true)); //true string
+    </script>
+    
+</body>
+</html>

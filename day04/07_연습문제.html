@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0 auto;
+        }
+        .box{
+            width: 280px;
+            height: 480px;
+            border: 2px solid black;
+            margin: 0 auto;
+        }
+        .box2{
+            width: 250px;
+            height: 80px;
+            border: 5px solid black;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 25px;
+            font-weight: 700;
+            line-height: 80px;
+            margin: 10px auto;
+            
+        }
+        .box3{
+            width: 250px;
+            height: 250px;
+            border: 5px solid black;
+            margin: 0 auto;
+            margin-top: 5px;
+            position: relative;
+        }
+        .i-box{
+            width: 100px;
+            height: 100px;
+            
+            position: absolute;
+        }
+        .box4{
+            background-color: red;
+            top: 40px;
+            left: 40px;
+            z-index: 3;
+            box-shadow: 10px 10px 10px 0.5px #FF6464 inset, 1px 1px 3px 0.5px rgb(112, 2, 2);
+            
+        }
+        .box5{
+            background-color: green;
+            top: 80px;
+            left: 80px;
+            z-index: 2;
+            box-shadow: 10px 10px 10px 0.5px rgb(21, 159, 21) inset, 1px 1px 3px 0.5px rgb(0, 61, 0);
+            
+        }
+        .box6{
+            background-color: blue;
+            top: 120px;
+            left: 120px;
+            box-shadow: 10px 10px 10px 0.5px rgba(72, 72, 255, 0.983) inset, 1px 1px 3px 0.5px rgb(0, 0, 126);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="box2">텍스트</div>
+        <div class="box3">
+            <div class="i-box box4"></div>
+            <div class="i-box box5"></div>
+            <div class="i-box box6"></div>
+        </div>
+        <div class="box2">텍스트</div>
+    </div>
+</body>
+</html>

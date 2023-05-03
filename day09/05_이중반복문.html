@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table>tbody>tr>td{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>2~9까지 구구단</h1>
+    
+    <button type="button" onclick="gugudan();">구구단 출력</button>
+    <h3 id="print"></h3>
+    
+    <button type="button" onclick="guguPlus();" id="guguBtn">구구단 표 출력</button>
+    <!-- 2×1=2 3×1=3 ...
+           2×2=4 3×2=6 ... -->
+    <!-- tabel 생성해서 넣기 -->
+    <table border="1" id="gugu"></table>
+
+    <script>
+        function gugudan(){
+            let dan = 2;
+            let cnt = 1;
+            let result="";
+            while(cnt<10){
+                dan = 2;
+                while(dan<10){
+                result += `${dan} X ${cnt} = ${dan*cnt} `;
+                dan++;
+                    };
+            cnt++;
+                };
+            document.getElementById('print').innerText = result;
+        }
+    </script>
+
+    <script>
+        function guguPlus(){
+            let dan = 2;
+            let cnt = 1;
+            let result="";
+            while(cnt<10){
+                dan = 2;
+                result += '<tr>'; //<tr> 열어주기
+
+                while(dan<10){
+                result += `<td> ${dan} X ${cnt} = ${dan*cnt} </td>`;
+                dan++;
+                    };
+
+            cnt++;
+            result += `</tr>`; //</tr> 닫아주기 (한줄완성)
+                };
+
+            document.getElementById('gugu').innerHTML = result;
+        }
+
+        
+    </script>
+    <!-- 선생님의 표 출력 -->
+    <script>
+        document.getElementById('guguBtn').addEventListener('click',() => {
+            let str = `<table boder=1>`;
+                let incre = 1;
+                while(incre<10){
+                    let dan =2;
+                    str += `<tr>`;
+                        while(dan <10){
+                            str+=`<td>${dan} X ${incre} = ${dan*incre}</td>`;
+                            dan++;
+                        }
+                        incre++;
+                }
+
+                str += `</table>`;
+                document.getElementById('gugu').innerHTML = str;
+        })
+    </script>
+</body>
+</html>

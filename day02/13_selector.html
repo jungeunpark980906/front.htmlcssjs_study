@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자</title>
+    <style>
+        #ptag{
+            color: blueviolet;
+        }
+        #ptag:hover{
+            color: brown;
+            background-color: aqua;
+        }
+        .hong{
+            font-size: 20px;
+        }
+        p{
+            font-style: italic;
+        }
+        p:nth-child(even){
+            color: aquamarine;
+        }
+        /* 2n 도 동일 */
+        body > p {
+            font-weight: 700;
+        }
+        html p{
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+    <!-- 스타일을 넣는 경우
+    선택자 {
+        속성 : 값;
+        속성2 : 값2;
+    }
+
+    선택자 = 셀렉터 selecter
+    요소 = 태그(엘리먼트)를 선택하는 이름
+    종류
+    1. id : #아이디명 - 무조건 1게 또는 0개
+    2. class : .클래스명 - 여러개 가능 (같은 클래스는 같은 선택자 스타일에 영향을 받음)
+    3. tag : 태그명 (같은태그는 같은스타일을 적용)
+    4. 가상클래스 선택자 : 가상클래스명
+        어떤 조건이나 상황에서 스타일을 적용하도록 만든 선택자
+        일반적으로 앞에 다른 선택자가 나오고 뒤에 가상클래스 선택자가 오도록 설정
+        :hover 요소에 마우스를 올리면 변동이 있는
+        :focus 요소에 집중이 될 경우 적용
+        :nth-child(a) / nth-of-type(a) a번째에 해당하는 요소
+            a에 숫자를 넣어 해당 번째 요소를 선택
+            1 : 첫번째 요소
+            even : 짝수번째 요소
+            odd : 홀수번째 요소
+            2n-1 : 홀수번째 요소
+            3n : 3의 배수
+    } -->
+    <!-- 
+        선택자 조합
+        여러 선택자를 이용하여 요소를 선택
+        자식관계 >
+            부모선택자 > 자식선택자
+            부모선택자(바로 위의 부모)
+        자손관계 공백
+            조상선택자 자손선택자
+            조상선택자(부모포함)
+        본인 선택자를 붙여 나열
+            선택자1선택자2
+            선택자1과 선택자2를 모두 만족하는 요소
+            ex) #ptag.hong (o) 
+            ex) divp (x) 
+            ex) p.hong (o)
+            조합시 순서를 잘 고려해야함
+            안되는 경우 )
+            1. 붙여써서 발생되는 상황 (띄어쓰기가 안되어 구분이 안되는 경우)
+            .hongdiv (x) , div.hong (o)
+            2. 태그선택자들로만 구성이 되는 경우
+            3. 아이디 선택자가 같이 있는 경우
+            #input1#unput2 (한요소는 아이디가 1개만 가능)
+
+        선택자 우선순위 : 속성이 같은 경우 어떤 속성을 사용할 것인가
+        아이디 선택자(1000) > 클래스 선택자(100) > 태그 선택자(10)
+        단, 선택자순위도 동일한 경우 : 아래의 선택자가 우선 (덮어쓰기)
+
+
+     -->
+    <p id="ptag" class="hong">안녕하세여! 홍길입돠</p>
+    <p class="ptag">방가! 홍길순임!</p>
+    <p>하이루 난 임꺽정쓰</p>
+    <p>어이 나는 임꺽순이다</p>
+    <p>요오오오 나는 요정임둥</p>
+</body>
+</html>

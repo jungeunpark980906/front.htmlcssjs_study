@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습문제</title>
+    <style>
+        table{
+            font-size: 15px;
+        }
+        table td{
+            width:150px;
+        }
+   
+    </style>
+</head>
+<body>
+    <form action="">
+        <h2>데이터를 입력하세요</h2>
+        <fieldset>
+            <legend> 데이터 입력 칸</legend>
+            이름 : <input type="text" id="name"> <br>
+            거주지 : <input type="text" id="address"> <br>
+            좋아하는 리스트 <br>
+            리스트 1 : <input type="text" id="list1"> <br>
+            리스트 2 : <input type="text" id="list2"> <br>
+            리스트 3 : <input type="text" id="list3"> <br>
+            이메일 : <input type="email" id="email"> <br>
+            Pet 반려동물 여부 : <input type="text" id="pet" placeholder="Y/N" > <br>
+            지금 가장 원하는 것 : <input type="text" id="want"> <br>
+            <button type="button" id="sbBtn" onclick="add();"> 전송 </button>
+        </fieldset>
+        
+        <h2>전송받은 데이터 출력하기 <button type="button" id="printBtn" onclick="print();"> 출력 </button> </h2>
+        <fieldset>
+            <legend>데이터 출력 테이블</legend>
+            <table border="1">
+                <tr>
+                    <th>이름</th>
+                    <td id="tname"></td>
+                </tr>
+                <tr>
+                    <th>거주지</th>
+                    <td id="taddress"></td>
+                </tr>
+                <tr>
+                    <th>좋아하는 리스트</th>
+                    <td id="tlist"></td>
+                </tr>
+                <tr>
+                    <th>이메일</th>
+                    <td id="temail"></td>
+                </tr>
+                <tr>
+                    <th>Pet반려동물여부</th>
+                    <td id="tpet"></td>
+                </tr>
+                <tr>
+                    <th>지금가장원하는것</th>
+                    <td id="twant"></td>
+                </tr>
+            </table>
+         </fieldset>
+    </form>
+
+    <script>
+        // 객체 생성
+        let sbBtn = document.getElementById('sbBtn');
+        let printBtn = document.getElementById('printBtn');
+            // 버튼의 이름이 중복되면 안됨!
+
+        const data = {
+            name : "",
+            addr : "",
+            lists : {
+                list1: "",
+                list2: "",
+                list3: ""
+            },
+            email: "",
+            pet: "",
+            want: ""
+        };
+
+        // 저장하는 함수
+        function add(){
+            //가져오기
+            let name = document.getElementById('name').value;
+            let address = document.getElementById('address').value;
+            let list1 = document.getElementById('list1').value;
+            let list2 = document.getElementById('list2').value;
+            let list3 = document.getElementById('list3').value;
+            let email = document.getElementById('email').value;
+            let pet = document.getElementById('pet').value;
+            if(!(pet=='Y' || pet=='N'|| pet=='y'|| pet=='n')){
+                alert(`반려동물 여부에 Y,y 또는 N,n을 입력해주세요. 현재입력: ${pet}`);
+                location.reload();
+            } else {
+                alert('전송완료!');
+            }
+            let want = document.getElementById('want').value;
+
+            // Object에 넣기(담기)
+            data.name = name;
+            data.address = address;
+            data.lists.list1 = list1;
+                // lists안의 list1에 넣어줘야함! (데이터 구조 위치 중요)
+            data.lists.list2 = list2;
+            data.lists.list3 = list3;
+            data.email = email;
+            data.pet = pet;
+            data.want = want;
+            }
+       
+        // 출력하는 함수
+        function print() {
+            document.getElementById('tname').innerText = data.name;
+            document.getElementById('taddress').innerText = data.address;
+            document.getElementById('tlist').innerHTML 
+            = `<ul> <li>${data.lists.list1}</li> <li>${data.lists.list2}</li> <li>${data.lists.list3}</li> </ul>`;
+            document.getElementById('temail').innerText = data.email;
+            document.getElementById('tpet').innerText = data.pet;
+            document.getElementById('twant').innerText = data.want;
+
+            // 이렇게 나눠 저장도 가능!
+            // let str = `<li>${data.lists.list1}</li>`;
+            // str += `<li>${data.lists.list2}</li>`;
+            // str += `<li>${data.lists.list3}</li>`;
+            // document.getElementById('tlist').innerHTML = str;
+
+            // 출력완료 알림
+            alert('출력완료!')
+        }
+    </script>
+
+</body>
+</html>

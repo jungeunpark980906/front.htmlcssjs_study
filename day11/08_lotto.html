@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotto 생성</title>
+    <!-- set을 이용 (중복 자동 허용X) -->
+</head>
+<body>
+    <h1>1~45까지의 중복되지 않는 숫자 6개를 랜덤으로 추출 => 출력
+        (set 객체를 사용)
+    </h1>
+    
+    <button type="button" id="userBtn">랜덤번호 6개 생성 및 출력</button>
+    <h1 id="printNum"></h1>
+    
+    <button type="button" id="comBtn">당첨번호 7개 생성 및 출력 (마지막 번호는 보너스)</button>
+    <h1 id="printNum2"></h1>
+    
+    <button type="button" id="result">결과 확인</button>
+    <h1 id="printResult"><!-- -등 당첨 출력 --></h1>
+
+    <button type="button" onclick="window.location.reload();">다시하기</button>
+
+    <script>
+        const comNumSet = new Set();
+        const userNumSet = new Set();
+        let cnt=0;
+       
+        const printNum = document.getElementById('printNum');
+        const printNum2 = document.getElementById('printNum2');
+        const printResult = document.getElementById('printResult');
+        
+
+        // 유저 랜덤번호 생성 / 출력
+        document.getElementById('userBtn').addEventListener('click',function(){
+            let str=" ";
+            while(userNumSet.size < 6){
+                userNumSet.add(Math.floor(Math.random()*8)+1);
+           }
+           for(const k of userNumSet.keys()){
+                str += `${k} ` 
+           }
+           printNum.innerText = `랜덤 번호: ${str}`;
+        })
+
+        // 당첨번호 생성 / 출력
+        document.getElementById('comBtn').addEventListener('click',function(){
+            let str=" ";
+            // 당첨번호 7개 생성
+            while(comNumSet.size < 7){
+                comNumSet.add(Math.floor(Math.random()*8)+1);
+           }
+           for(const k of comNumSet.keys()){
+                str += `${k} ` 
+           }
+           
+           printNum2.innerText = `당첨 번호: ${str}`;
+        })
+
+        // 결과 확인
+        document.getElementById('result').addEventListener('click',function(){
+            let str=" ";
+            let lastNum=false;
+            
+            // 비교
+            for(const n of userNumSet.keys()){
+                if(comNumSet.has(n)){
+                    cnt++; 
+                }
+            }
+            
+            //배열로 변경 (배열은 clear가 없음)
+            let comNumArr = [];
+            comNumSet.forEach(function(keys){
+                comNumArr.push(keys);
+            });
+            
+            //마지막 숫자 비교
+            for(const n of userNumSet.keys()){
+                if(n == comNumArr.pop()){
+                    lastNum = true;
+                }
+            }
+            console.log(lastNum);
+
+            
+            // 등수
+            switch(cnt){
+                case 6: str='1등입니다'; break;
+                case 5:
+                if(lastNum == false){
+                    str ='2등입니다'; 
+                    break;
+                } else {
+                    str ='3등입니다';
+                    break;
+                }; break;
+                case 4: str ='4등입니다'; break;
+                case 3: str ='5등입니다'; break;
+                default: str ='꽝'; break;
+            }
+            printResult.innerText = str;
+        })
+    </script>
+</body>
+</html>

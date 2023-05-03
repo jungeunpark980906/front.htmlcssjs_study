@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>a 싱커(책갈피)</title>
+</head>
+<body>
+    <!-- a 싱커
+    : 책갈피 기능 = 도움말에서 해당 목차를 클릭하면 그 위치로 이동하는 요소
+    - id로 위치 구분
+    - id : 요소가 가지는 유일한 이름 (중복X) 
+    - id가 중복되는 경우 ) 실행이 안되거나 error가 뜨지 않음
+                        다만, 정상(내가 원하는) 동작이 안될 수 있음
+    - href에 id명을 넣어주면 해당 id로 바로 이동-->
+    <!-- css선택자: #은 id -->
+    <a href="#first" id="top">1번위치</a>
+    <a href="#second">2번위치</a>
+    <a href="#third">3번위치</a>
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+    <a href="#top" id="first"><img src="/image/냥1.jpg" alt="고양이그림"></a>
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+    <a href="#top" id="second"><button i> 2번</button>
+    <img src="/image/냥3.jpg" alt=""></a>
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+    <a href="#top"><button id="third">3번</button></a>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

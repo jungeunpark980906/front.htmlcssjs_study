@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+        @font-face {
+        font-family: 'KCCChassam';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCCChassam.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+        }  
+        body{
+            font-family: 'KCCChassam';
+            background-color: rgb(255, 249, 252);
+        } 
+        header{
+          text-align: center;
+          margin: 50px 0;
+     
+        }
+        header>img{
+            width: 280px;
+            height: 200px;
+            
+        }
+        header>h1{
+            color: rgb(207, 103, 138);
+            
+        }
+        section{
+            display: flex;
+            justify-content: space-around;
+            
+        }
+        section>article{
+            border: 4px dotted rgb(248, 114, 158);
+            border-radius: 20px;
+            padding: 30px;
+      
+        }
+        section>article:hover{
+            border: 4px solid rgb(255, 25, 101);
+            background-color: white;
+        }
+
+        section h2{
+            color: rgb(207, 103, 138);
+            
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/image/pochacco.png" alt=""> </header>
+    <section> </section>
+
+    <script>
+        // document.createElement('h1');
+        // str += `<h1></h1>`; 동일
+
+        let header = document.querySelector('header');
+        let section = document.querySelector('section');
+
+        fetch('https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json')
+        .then(resp => resp.json())
+        .then(json => MakeHeader(json));
+
+        //header
+        function MakeHeader(object){
+            let myH1 = document.createElement('h1');
+            myH1.innerHTML = `♥ ${object['squadName']} ♥`;
+            header.appendChild(myH1);
+
+            let myP = document.createElement('p');
+            myP.innerText 
+            = `Hometown : ${object['homeTown']} // formed : ${object['formed']}`;
+            header.appendChild(myP); //추가하기!
+
+
+            show(object); //show도 함께 실행
+        }
+
+        function show(object){
+            let lists = object['members'];
+
+            for(let i=0; i< lists.length; i++){
+                let members = lists[i]; //members의 순서대로 담고
+
+                let article = document.createElement('article');
+                let h2 = document.createElement('h2');
+                let p1 = document.createElement('p');
+                let p2 = document.createElement('p');
+                let p3 = document.createElement('p');
+                let list = document.createElement('ul');
+
+                h2.innerHTML = `${members['name']}`;
+                p1.innerHTML = `secretIdentity : ${members['secretIdentity']}`;
+                p2.innerHTML = `age : ${members['age']}`;
+                p3.innerHTML = `Superpowers :`
+
+                let Superpowers = members['powers']; //members의 powers 배열 담고
+                for(const c of Superpowers){ //for문으로 순회하면서 넣기
+                    list.innerHTML += `<li>${c}</li>`;
+                }
+    
+                //article에 넣어 묶기
+                article.append(h2);
+                article.append(p1);
+                article.append(p2);
+                article.append(p3);
+                article.append(list);
+
+                //section에 보내서 출력
+                section.append(article);
+            }
+
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation</title>
+    <!-- 
+        1. 애니메이션 등록(@keyframes)
+            - 시간비율은 0~100%, 0% = from, 100% = to로 대체가능
+        
+        @keyframes 애니메이션 명{
+            시간비율{
+                스타일;
+            }
+            시간비율{
+                스타일;
+            }
+        }
+        2. 애니메이션 적용
+            - animation-name : 동작할 애니메이션 이름
+            - animation-duration : 애니메이션 동작시간
+            - animation-iteration-count : 애니메이션 반복 횟수, 숫자 or infinite(무한)
+     -->
+    <style>
+        /* 폰트 사이즈가 변경됨 */
+        @keyframes scaleFont {
+            from{
+                font-size: 20px;
+            }
+            50%{
+                font-size: 50px;
+            }
+            to{
+                font-size: 20px;
+            }
+        }
+        .ani{
+            animation-name: scaleFont;
+            animation-duration: 5s;
+            animation-iteration-count: 2;
+            /* scaleFont애니메이션을 5초에 한번씩 2번 보여줌 */
+        }
+    </style>
+</head>
+<body>
+    <span class="ani">animation</span>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation 연습</title>
+    <style>
+        body{
+            position: relative;
+        }
+        @keyframes move {
+            from{
+                left: 0%;
+            }
+            50%{
+               left: 90%;
+                background-color: cornsilk;
+            }
+            to{
+                left: 0%;
+            }
+        }
+        .box{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            background-color: brown;
+            animation-name: move;
+            animation-duration: 5s;
+            animation-iteration-count: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        .bounce{
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+            animation-name: bounce;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease;  /* 진행속도 */
+        }
+        @keyframes bounce{
+            0%{
+                bottom: 0;
+            }
+            25%{
+                bottom: 15px;
+            }
+            50%{
+                bottom: 0;
+            }
+            75%{
+               bottom: 30px; 
+            }
+            100%{
+                bottom: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bounce">hihihi</div>
+</body>
+</html>

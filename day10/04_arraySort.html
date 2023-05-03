@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열의 정렬</title>
+</head>
+<body>
+    <h1>배열의 정렬은 문자기반!</h1>
+    <h4>
+        array.sort() : 문자기준 오름차순 정렬 (ascending)
+        array.reverse() : 문자기준 내림차순 정렬 (descending)
+
+        정렬할 배열의 원소가 숫자인 경우 : 콜백함수를 이용하여 내부 연산하여 정렬
+        (콜백 함수 : 바로 사용하는 함수)
+        
+        순차 정렬 (오름차순)
+        array.sort(function(a,b){
+            return a- b;
+        }) // a와 b는 배열의 첫번째 요소, 두번째 요소
+        // a와 b를 비교하여 작으면 -1, 크면 1을 리턴해서 순서를 바꿔주는 구조
+
+        역 정렬 (내림차순)
+        array.sort(function(a,b){
+            return b - a;
+        })
+    </h4>
+
+    <script>
+
+        // myArr : 1~45까지의 랜덤 숫자 6개를 생성해 배열에 넣고 콘솔출력
+        const myArr=[];
+        for(let i=0; i<6; i++){
+            myArr.push(Math.floor(Math.random()*45)+1);
+            // myArr[i] = Math.floor(Math.random()*45)+1;
+            console.log(myArr[i]);
+        }
+
+        // 순차 정렬후 콘솔출력
+        myArr.sort(function(a,b){
+            return a-b;
+        }) 
+        console.log(myArr);
+
+        //=====================================================================================
+
+        // cars: 객체가 있는 배열 생성해 연식을 기준으로 콘솔 출력
+        const cars = [
+            {type: 'Volvo', year:2024},
+            {type: 'Benz', year:2022},
+            {type: 'BMW', year:2023}
+        ];
+
+        // 연식기준 오래된 순서 정렬 2022-2023-2024
+        cars.sort(function(a,b){
+            return a.year - b.year;
+        });
+        console.log(cars);
+
+        // 객체의 문자값을 이용하여 정렬 Benz-BMW-Volvo
+        cars.sort(function(a,b){
+            let x = a.type.toLowerCase(); //같은 비교를 위해 전체 소문자로 변환
+            let y = b.type.toLowerCase();
+            if( x > y ){ return 1 };
+            if( y > x ){ return -1 };
+            return 0; 
+        });
+        console.log(cars); 
+
+        //=========================================================================================
+
+        const memberObject = {
+            name : 'hong',
+            age : 30,
+            marride : true,
+            favors : ['Baseball', 'Game', 'Movie', 'etc...']
+        }
+       
+        // 객체에서 값을 뺴서 people 배열에 넣기 (push)
+        const people = []; 
+
+        // people에 객체 5명 추가
+        for(let i=0; i<5; i++){
+            people.push(memberObject);
+        }
+        console.log(people);
+        console.log(people[0].name); //0번지 사람의 이름 : hong
+
+        // people 객체의 자료를 하나씩 변경X
+        people[1].name='kim'; // push로 넣기 때문에 전체 객체의 자료가 변경됨!
+        people[2].age=50;
+        people[3].marride=false;
+      
+        //===============================================================================================
+
+        // 배열의 순회 (하나씩 출력!)
+            // for in : 객체에 사용, for of : 배열에 사용하는 for문
+
+        // for(const 임시변수  of 배열){} : 향상된 for문 처럼
+        for(const member of people){
+            console.log("--여기는 배열의 안--");
+            console.log('--배열안의 객체 탐색--');
+            for(const keyName in member){
+                if(keyName != 'favors'){ //favors는 별도 처리가 필요 (favors는 또 순회해야함!) : 나머지는 일반데이터
+                    console.log(member[keyName]); //member["name"]=hong 과 동일의미
+                } else {
+                    console.log('--favors안의 배열--')
+                    //favors의 경우
+                    for(const favor of member[keyName]){
+                        console.log(favor);
+                    }
+                }
+            }
+        }
+
+
+
+
+    </script>
+</body>
+</html>

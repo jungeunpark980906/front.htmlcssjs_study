@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>attribute</title>
+</head>
+<body>
+    <img src="/image/토토라.png" alt="이미지 없음" id="imgTag" class="A B C"> 
+    <!-- class안에 띄어쓰기를 사용하는 경우, class를 여러개 넣는다는 의미 (A, B, C를 넣음) -->
+    <script>
+        const imgTag = document.getElementById('imgTag');
+        console.log(imgTag);
+
+        //img태그의 속성들 id, src, alt, classList 콘솔에 찍어보기
+        console.log(imgTag.id); //imgTag
+        console.log(imgTag.src); //http://127.0.0.1:5500/image/%ED%86%A0%ED%86%A0%EB%9D%BC.png
+                                // 이름이 한글이라 깨짐 = 영어로 저장하는 것을 추천
+        console.log(imgTag.alt); //이미지 없음
+        console.log(imgTag.classList); //DOMTokenList(3) ['A', 'B', 'C', value: 'A B C']
+        console.log(imgTag.classList[0]); //A
+
+        console.log('----------------------------------');
+
+        for(const key in imgTag){
+            console.log(key,':',imgTag[key]);
+        } // 전체 속성확인 가능
+    </script>
+</body>
+</html>

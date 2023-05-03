@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>set</title>
+</head>
+<body>
+    <script>
+        const testSet = new Set(['html', 'css', 'js']);
+        console.log(testSet);
+
+        testSet.add('react'); //Set(4) {'html', 'css', 'js', 'react'}
+        console.log(testSet);
+
+        console.log(testSet.size); //4
+
+        testSet.delete('html'); //Set(3) {'css', 'js', 'react'}
+        console.log(testSet);
+
+        console.log(testSet.has('html')); //false
+        console.log(testSet.has('css')); //true
+
+        console.log('-------------------------------------');
+
+        testSet.forEach(function(value,index,self){
+            console.log(index,value,self);
+        }); // value와 index가 동일
+
+        console.log(testSet.entries());
+
+        console.log(testSet.keys());
+
+        console.log(testSet.values());
+        
+        // testSet.keys().forEach(function(value){
+        //     console.log(value);
+        // }); 
+        // error
+
+        for(const iter of testSet.entries()){
+            //iter = testSet의 key,value값 (속성=배열) 
+            console.log(iter); //배열로 출력됨
+        }
+
+        for(const iter of testSet.entries()){
+            iter.forEach(function(v, i, s){ //하나씩 출력됨
+                console.log(i, v);
+            })
+        }
+        
+        //keys() / values() => for of 를 사용하여 탐색 콘솔에 출력
+        for(const k of testSet.keys()){
+            console.log(k);
+        }
+        for(const v of testSet.values()){    
+            console.log(v);
+        }
+            
+        
+        testSet.clear(); // set비우기
+        console.log(testSet);
+        console.log(testSet.size);
+
+
+    </script>
+</body>
+</html>

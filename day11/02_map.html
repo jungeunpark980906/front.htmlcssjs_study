@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map</title>
+</head>
+<body>
+    <script>
+        const myMap = new Map();
+        myMap.set('html',85);
+        myMap.set('css',90);
+        myMap.set('js',75);
+        console.log(myMap);
+    </script>
+    <script>
+        console.log(myMap.get('js')); //75
+    </script>
+    <script>
+        myMap.delete('css');
+    </script>
+    <script>
+        console.log(myMap.has('css')); //false
+    </script>
+    <script>
+        console.log('----------------------------');
+        myMap.forEach(function(value, index, self){
+            console.log(index, value, self);
+        })
+
+        // myMap.entries().forEach(function(v,k,s){
+        //     console.log(k,v,s);
+        // })
+        // error
+
+        console.log(myMap.entries());
+
+        for(const e of myMap.entries()){
+            console.log(e); // [key,value]로 묶어 출력
+        }
+
+        for(const e of myMap.entries()){
+            e.forEach(function(v, k){
+                console.log(k,v); // 하나씩 key - value - key - value순 출력 
+            })
+        }
+
+        console.log(myMap.size); //2
+
+        console.log(myMap.keys());
+        // myMap.clear();
+        // console.log(myMap.size);
+    </script>
+</body>
+</html>

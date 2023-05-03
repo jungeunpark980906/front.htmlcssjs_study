@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>border속성</title>
+    <style>
+        /* 
+        inline 태그들의 가로길이는 컨텐츠의 길이로 설정(변경x)
+        크기 속성
+            width : 가로 길이
+            block 태그의 기본 가로는 100%으로 설정되어 있음
+            부모크기의 100%
+            (안의 값의 가로길이를 늘려도, 밖의 길이가 좁으면 늘어나지 않는다는 것을 생각)
+                min-width : 최소 가로길이 설정
+                max-width : 최대 가로길이 설정
+                (더이상 못늘리고, 못줄이게 설정해 놓는 것)
+            height : 세로길이
+            컨텐츠가 없으면 0, 있으면 컨텐츠의 높이만큼 자동할당
+            */
+            p{
+                max-width: 500px;
+                min-width: 300px;
+            }
+            /* div{
+                border: 1px solid black;
+                background-color: aqua;
+                height: 100px;
+                width: 100px;
+                border-radius: 20px; 
+                border-top-right-radius: 20px;} 
+            */
+            .box{
+                width: 200px;
+                height: 200px;
+                border: 2px solid blue;
+            }
+            .box2{
+                width: 300px;
+                height: 300px;
+                border: 1px dotted red;
+                border-radius: 10px 0px 10px 30px;
+                background-color: pink;
+                border-width: 20px;
+
+            }
+    </style>
+</head>
+<body>
+    <p>
+        안녕안녕.나는고먐미 안녕안녕.나는고먐미
+    </p>
+    <div></div>
+    <div class="box"></div>
+    <br><br><br>
+    <div class="box2"></div>
+</body>
+</html>

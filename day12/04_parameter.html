@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수와 파라미터</title>
+</head>
+<body>
+    <h1>자바스크립트의 파라미터 특징과 기능</h1>
+    <h3>
+        파라미터의 개수와 관계없이 함수나 메서드의 이름이 같다면 호출가능
+
+        파라미터의 개수와 불일치하여 값을 받지 못하는 파라미터는 undefined 처리
+
+        값을 받아오지 못하는 파라미터가 undefined 일 경우, 별도로 파라미터에 기본값을 설정할 수 있음
+        => optional parameter
+
+        모든 파라미터를 관리하는 arguments라는 프로퍼티를 이용하여 파라미터를 배열에 담아 사용할 수 있음
+
+        프로토 타입의 속성(프로퍼티)을 사용하는 방식
+        (단, 옵셔널 파라미터는 저장하지 않는다)
+
+        옵셔널 파라미터는 다른 파라미터보다 항상 뒤에 있어야함
+    </h3>
+
+    <script>
+        function testFun(p1, p2, p3, p4, p5=1){
+            console.log(arguments); //Arguments(5)
+            console.log(arguments.length); // 5  개수 
+            return p1 + p2 - p3 * p4 / p5;
+        }
+        console.log(testFun(1,2,3,4,5)); // (1+2-3*4/5) Arguments(5), 5, 0.600..
+        console.log(testFun(1,2,3,4)); // (1+2-3*4/1) Arguments(4), 4, -9
+
+
+        //---------------------------------------------------------------------------
+
+        function myFun(x, px){
+            let y = px;
+            if(y == undefined){
+                y=2; //옵셔널
+            }
+            console.log(x,y);
+
+        }
+        
+        function myFun2(x, y=2){
+            console.log(x,y);
+        }
+        myFun(1);
+        
+        //----------------------------------------------------------------------------
+
+        function restFun(a, b, ...others){
+            console.log(a+b);
+            console.log(others);
+            for(const arg of others){
+                console.log(`arg: ${arg}`);
+            }
+        }
+        restFun(1,2,3,4,5,6,7,8,9);
+
+        //--------------------------------------------------------------------------------
+
+        let oldArr = ['a', 'b', 'c', 'd', 'e'];
+        let newObj = {...oldArr};
+        console.log(oldArr);
+        console.log(newObj);
+
+        function sum(x, y, z){
+            return x+y+z;
+        }
+        let num = [1, 2, 3];
+        console.log( sum(...num) ); //6
+
+
+    </script>
+</body>
+</html>

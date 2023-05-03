@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for 반복문</title>
+    <!-- 가위바위보 10게임의 승률 출력해보기 -->
+</head>
+<body>
+    <h1>가위바위보 10개임의 승률</h1>
+    <button type="button" id="btn">승률 출력</button>
+    <h3>
+        10 게임의 승률은 <span id="result"></span>% 입니다!
+    </h3>
+    <script>
+        // com, user 랜덤 
+        document.getElementById('btn').addEventListener('click',() => {
+            // click',function()도 동일
+            
+            // 승,패,무승부의 횟수 저장 변수
+            // 1 가위 2 바위 3 보
+            let win = 0;
+            let lose = 0;
+            let draw = 0;
+
+            for(let i=0; i<10; i++){
+                let me = Math.floor(Math.random()*3)+1;
+                let com = Math.floor(Math.random()*3)+1;
+                
+                switch(com){
+                    case 1: 
+                        if(me == 1) {
+                            draw += 1
+                        } else if(me == 2) {
+                            win += 1
+                        }else {lose += 1};
+                        // com == 1? draw++ : com == 2? lose++ : win++ ; 
+                        // 삼항 연산자 사용 가능
+                        break;
+                    case 2: 
+                        if(me == 1) {
+                                lose += 1
+                            } else if(me == 2) {
+                                draw += 1
+                            }else {win += 1};
+                            break;
+                    case 3: 
+                        if(me == 1) {
+                                win += 1
+                            } else if(me == 2) {
+                                lose += 1
+                            }else {draw += 1};
+                            break;
+                }
+            }
+            // 승률계산 (승리 / (10- 무승부))*100
+            document.getElementById('result').innerText = Math.floor((win/(10-draw))*100);
+            document.getElementById('result').innerText = (win/(10-draw)*100).toFixed(2);
+            // 소수점 2자리까지
+            // .toPrecision(2) 는 전체자리수가 2개까지 (전체자리수 포함/ 정수자리+소수자리)
+            console.log('승: ',win);
+            console.log('패: ',lose);
+            console.log('무: ',draw);
+
+        })
+
+    </script>
+</body>
+</html>

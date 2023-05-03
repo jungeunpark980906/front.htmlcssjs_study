@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            /* border: 1px solid black; */
+            border-collapse: collapse;
+            border-top: 2px solid rgb(128, 0, 0);
+            border-bottom: 2px solid rgb(128, 0, 0);
+            
+        }
+        th{
+            border-bottom: 2px solid rgb(128, 0, 0);
+        }
+        th,td{
+            /* border: 1px solid black; */
+            width: 150px;
+            height: 30px;
+            text-align: center;
+            border-right: 1px solid pink;
+            border-bottom: 1px solid pink;
+        }
+        /* tr 첫번째 요소 */
+        thead{
+            background-color: coral;
+        }
+        /* tbody의 짝수요소 */
+        tbody>tr:nth-child(2n){
+            background-color: lightgoldenrodyellow;
+        }
+        /* tr에 마우스를 올리면 색 변경 */
+        tbody>tr:hover{
+            background-color: palevioletred;
+            color: white;
+        }
+        .last{
+            border-right: none;
+        }
+        .w1{
+            width: 50px;
+        }
+        .w2{
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>국어</th>
+                <th class="last">영어</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>홍길동</td>
+                <td>78</td>
+                <td class="last">98</td>
+            </tr>
+            <tr>
+                <td>홍길순</td>
+                <td>75</td>
+                <td class="last">95</td>
+            </tr>
+            <tr>
+                <td>이순신</td>
+                <td>48</td>
+                <td class="last">45</td>
+            </tr>
+            <tr>
+                <td>임꺽정</td>
+                <td>84</td>
+                <td class="last">87</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>합계</th>
+                <th>285</th>
+                <th class="last">325</th>
+            </tr>
+        </tfoot>
+    </table>
+<br>
+    <table>
+        <thead>
+            <tr>
+                <th class="w1">번호</th>
+                <th class="w2">제목</th>
+                <th>작성자</th>
+                <th>날짜</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td >5</td>
+                <td>게시글입니다.</td>
+                <td>홍길동</td>
+                <td>2020-11-25</td>
+            </tr>
+            <tr>
+                <td >4</td>
+                <td>예제입니다.</td>
+                <td>홍길동</td>
+                <td>2020-11-25</td>
+            </tr>
+            <tr>
+                <td >3</td>
+                <td>연습문제입니다.</td>
+                <td>홍길동</td>
+                <td>2020-11-25</td>
+            </tr>
+            <tr>
+                <td >2</td>
+                <td>공지사항입니다.</td>
+                <td>홍길동</td>
+                <td>2020-11-25</td>
+            </tr>
+            <tr>
+                <td >1</td>
+                <td>게시글입니다.</td>
+                <td>홍길동</td>
+                <td>2020-11-25</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

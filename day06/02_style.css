@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+*{ 
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'TheJamsil5Bold';
+}
+body{
+    margin: 0;
+    height: 100vh;
+    /* vh는 모니터(전체브라우저) 높이 기준 */
+    min-width: 900px;
+  
+}
+.cover{
+    width: 80%;
+    height: 100vh;
+    float: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(218, 211, 211,0.7);
+    background-image: url(/image/산리오.png); 
+}
+
+a{
+    text-decoration: none;
+}
+ul{
+    list-style-type: none;
+}
+.navbar{
+    height: 60px;
+    padding: 0 30px;
+    font-family: 700;
+    float: left;
+    display: inline;
+}
+
+
+.main{
+    margin-left: 200px;
+    text-align: center;
+    font-size: 70px;
+    color: white;
+   
+}
+.main>p{
+    margin-bottom: 50px;
+}
+
+.more{
+    /* 버튼 설정 */
+    width: 150px;
+    height: 50px;
+    border: 2px solid white;
+
+    text-align: center;
+    margin: auto;
+    padding: 10px 0 20px 0;
+    color: white;
+}  

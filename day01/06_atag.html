@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>a tag<title>
+</head>
+<body>
+    <!-- a tag
+    - 다른 페이지로 이동하게하는 태그
+    - 다운로드가 가능하게 하는 태그
+    - <a> 태그 안쪽의 글자에 링크가 걸림 </a>
+    <속성>
+    - herf 속성 
+        : 이동할 url값(없다면 현재페이지 새로고침)
+            값에 //, http:// : url로 인식, 없다면 파일로 인식
+            값에 tel : 핸드폰으로 연결 (모바일 앱에서 사용)
+            값에 mailto : 이메일로 연결
+    - target 속성
+        : 띄울 창 선택
+            _self : 현재 창 (기본값)
+            _blank : 새 창
+            _parent : 부모 창
+                결제창처럼 팝업 창이 뜨고 (자식창)의 값을 반영하여 원래창이 (부모창)변경에 사용
+                본인인증에 많이 사용
+            _top : 최상위(최고조) 창
+                부모가 없다면 _self와 동일
+                다중 팝업이 뜨는 경우에 사용
+    - download 속성
+        : 해당파일을 다운로드
+         href 속성이 파일로 입력되어 있어야함
+      -->
+       
+      <!-- url 인식 : 현재창에 네이버 연결 -->
+    <a href="https://www.naver.com" target="_self">naver로 이동</a> <br>
+    <a href="https://www.naver.com" target="_blank">naver 새창에서 열기</a><br>
+    <a href="naver.com" target="_blank">파일로 인식(error)</a><br>
+    <a href="01_text.html" target="_blank">파일로 인식</a><br>
+    <a href="01_text.html" download="_blank">다운로드</a><br>
+    <a href="tel:+8201011112222">전화문의</a>
+    <a href="mailto:a120871@naver.com">메일문의</a>
+    
+</body>
+   
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글자색 바꾸기</title>
+    <style>
+        .java{
+            color: aquamarine;
+            font-size: 50px;
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="heading">javascript</h1>
+    <h3 id="main">위의 글자 클릭</h3>
+
+    <h1 id="test">test</h1>
+    <h3 id="testaa">aa</h3>
+    
+    <!-- 클릭시 스타일 변경 -->
+    <script>
+        
+        //1. document.getElementById('__') 사용
+        let heading = document.getElementById('heading');
+        // 담아주고
+        heading.onclick = function(){
+            // 클릭시 함수 실행
+            // 또는 <h1 id="heading" onclick>으로도 가능
+            heading.style.color='blue';
+        }
+
+        // 2. document.querySelector('#__'); 사용
+        let main = document.querySelector('#main');
+        main.onclick = function(){
+            main.style.setProperty('font-size',"30px");
+            // css스타일 속성 변경
+        }
+    </script>
+    <script>
+
+    let test1 = document.getElementById('test'); 
+    test1.onclick = function(){
+        test1.style.color='red';
+    } 
+    
+    let aa = document.getElementById('testaa');
+        aa.onclick = function(){
+            aa.classList.toggle('java');
+            // testaa의 class 리스트에 java가 있으면 빼고, 없으면 넣고
+        }
+    </script>
+</body>
+</html>

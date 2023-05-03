@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+</head>
+<body>
+    <script>
+        const stringData = '{"id":"1234", "type":"donut","name":"cake",'+
+        '"image":{"url":"img/0001.jpg","width":"200","height":"200"},'+
+        '"thumbnail":{"url":"img/thumbnail/0001.jpg","width":"20","height":"20"}}';
+
+        let parseData = JSON.parse(stringData);
+        console.log(parseData);
+
+        //console에 key : value 형식으로 출력해보기
+        //for in으로 접근하기
+
+        for(const s in parseData){
+            
+            if(s == 'image'){ //image의 경우
+                console.log(`----${s}----`);  //----image----
+                for(const i in parseData.image){
+                    console.log(i,':', parseData.image[i]); //url : img/0001.jpg
+                }
+
+            } else if(s == 'thumbnail'){
+                console.log(`----${s}----`); //----thumbnail----
+                for(const t in parseData.thumbnail){ 
+                    console.log(t,':', parseData.image[t]); //url : img/thumbnail/0001.jpg
+                }
+                
+            } else {
+                console.log(s,':',parseData[s]); // id : 1234
+            }
+
+        }
+    //----------------------------------------------------------------------------------
+
+        //image, thumbnail을 한번에 정리하는 경우! (선생님)
+        for(const s in parseData){
+            
+            if(s == 'image' || s == 'thumbnail'){
+                let innerObject = parseData[s]; // image 또는 thumbnail이 object에 저장
+                for(const o in innerObject){
+                    console.log(o, ":", innerObject[o]);
+                }
+
+            } else {
+                console.log(s,':',parseData[s]); // id : 1234
+            }
+
+        }
+
+    //----------------------------------------------------------------------------------
+
+    const myInfoData = {
+        "name":"kim",
+        "age":"30",
+        "email":"123@naver,com",
+        "major":{
+            "m1":"java",
+            "m2":"html",
+            "m3":"css"
+        }
+    }
+    // 객체를 문자열로 반환
+    // JSON.stringify()
+    let a = JSON.stringify(myInfoData);
+    console.log(a); 
+    console.log(typeof a); //string
+
+    </script>
+    
+</body>
+</html>

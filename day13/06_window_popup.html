@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팝업창</title>
+</head>
+<body>
+    <button type="button" onclick="openWindow();">열기</button>
+    <button type="button" onclick="closeWindow();">닫기</button>
+    <h3 id="msg"></h3>
+
+    <button type="button" id="alert">alert</button>
+    <button type="button" id="prompt">prompt</button>
+    <button type="button" id="confirm">confirm</button>
+    <h3 id="msg2"></h3>
+<!-- 
+    <script>
+        let myWindow;
+        function openWindow(){
+            myWindow = window.open("","mywindow", "width=400, height=500");
+            // myWindow = open("","mywindow", "width=400, height=500"); //window. 이 없어도 사용은 가능
+        }
+
+        function closeWindow(){
+            if(myWindow){ //myWindow가 true이면 (열려있으면)
+                myWindow.close();
+            }
+        }
+    </script> -->
+
+    <script>
+        let print = document.getElementById('msg2');
+        
+        document.getElementById('alert').addEventListener('click',()=>{
+            alert('alert창');
+            print.innerHTML += `alter창 <br>`;
+        })
+        document.getElementById('prompt').addEventListener('click',()=>{
+            let p = prompt('prompt 입력을 받는 창');
+            print.innerHTML += `prompt창 내용: ${p} <br>`;
+        })
+        document.getElementById('confirm').addEventListener('click',()=>{
+            let c = confirm('확인/취소를 누르는 창');
+            if(c){
+                print.innerHTML += `confirm창 확인/취소 : 확인 (${c})`;
+            } else {
+                print.innerHTML += `confirm창 확인/취소 : 취소 (${c})`;
+            }
+        })
+
+    </script>
+
+</body>
+</html>

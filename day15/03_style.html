@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element의CSS</title>
+    <style>
+        .yellow{
+            background-color: yellow;
+        }
+        .black{
+            background-color: black;
+            color: aliceblue;
+        }
+        .red{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        색상명을 입력하고, 색상변경버튼을 클릭하면
+        현재 h1 태그의 배경색이 입력된 색상이 되도록 변경
+    </h1>
+
+    <input type="text" id="color" placeholder="색상입력">
+    <button id="change">변경</button>
+    
+    <script>
+        document.getElementById('change').addEventListener('click',()=>{
+            let color = document.getElementById('color').value;
+            let h1 = document.querySelector('h1');
+            
+            //1. css의 변경 대상과 분량이 많을 경우 (단, 미리 style에 만들어놔야함)
+            h1.className = color;
+            
+            //2. css의 변경 대상, 분량도 적을 경우 (대상과 style내용을 직접 지정)
+            h1.style.backgroundColor = color;
+            
+            // 3. setAttribute사용
+            h1.setAttribute('style',`background-color: ${color}`);
+        })
+        </script>
+
+<!-- ------------------------------------------------------------------------------------------------ -->
+
+
+    <hr>
+    <img src="/image/가위.png" alt="" id="img"> <br>
+
+    <input type="text" name="" id="attrName" placeholder="속성 예)style">
+    <input type="text" name="" id="attrValue" placeholder="속성값 예)width=500px">
+    <button type="button" id="btn">속성변경</button>
+
+
+    <script>
+        document.getElementById('btn').addEventListener('click',()=>{
+            let attrName = document.getElementById('attrName').value;
+            let attrValue = document.getElementById('attrValue').value;
+            
+            const img = document.querySelector('img');
+            img.setAttribute(attrName,attrValue);
+            // img[arrtName] = attrValue; 로 key,name처럼 사용해도 됨!!
+
+            
+        })
+
+    </script>
+</body>
+</html>

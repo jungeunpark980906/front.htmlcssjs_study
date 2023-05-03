@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배수 출력</title>
+</head>
+<body>
+    <h1>배수 출력하기 (1~100까지 중 입력한 숫자의 배수)</h1>
+    <input type="text" name="" id="number">
+    <button type="button" id="btn">배수 출력</button>
+    <h3 id="result"></h3>
+
+    <script>
+        //출력
+        document.getElementById('btn').addEventListener('click', ()=>{
+            let number = Number(document.getElementById('number').value); // 가져오는 값을 무조건 클릭 문 안에 있어야 가져오기 가능!
+            calc(number);
+
+        });
+        // 배수처리
+        function calc(number){
+            let print=" "; // 한칸을 띄어주는 건, 문자만 있다는 것이 아님을 주는 것
+            let cnt=0;
+            for(let i=1; i<=100; i++){
+
+                if(i%number == 0){
+                    // print += `${i} `;
+                    print += i +" ";
+                    cnt++;
+                }
+                
+            }
+            document.getElementById('result').innerText = `${print} \n 총배수의 갯수: ${cnt}`;
+            // document.getElementById('result').innerHTML = `${print} <br> 총배수의 갯수: ${cnt}`;      
+            // 혹은 return `${print} \n 총배수의 갯수: ${cnt}`;를 하고, 출력에서 출력도 가능                                                    
+   
+        }
+    </script>
+</body>
+</html>

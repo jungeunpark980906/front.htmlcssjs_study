@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파라미터 함수</title>
+</head>
+<body>
+    <h1>함수 파라미터</h1>
+    <script>
+        let name = '홍길순';
+        function callName(herName){
+            let hisName = '홍길동';
+            console.log('여자친구 이름: ', herName); // 외부변수 이름
+            console.log('남자친구 이름: ', hisName); // 내부변수 이름
+            console.log('여자친구의 다른이름: ', name);
+        }
+        callName('김영희');
+        // console.log(hisName); // 변수의 내부에서 선언된 변수 = 외부에서 사용 불가능
+    </script>
+
+    <!-- 함수 만들기
+    파라미터로 이름과 취미 받아서 => 콘솔에 '홍길동은 축구를 좋아합니다' 출력 -->
+    <script>
+        function nameHobby(name,hobby){
+            console.log(`${name}은 ${hobby}를 좋아합니다`);
+        }
+        nameHobby('홍길동','축구');
+
+        function iKnowHer(name,hobby){
+            callName(name);
+            nameHobby(name,hobby);
+            console.log('나는 그녀를 잘 알아요');
+        }
+        iKnowHer('정은','수영')
+    </script>
+
+    <h1>리턴</h1>
+    <script>
+        function returnFunc(num1,num2){
+            let result = num1 + num2;
+            return result
+        }
+        let result = returnFunc(10,20);
+        console.log(result);
+
+        console.log(returnFunc(20,30));
+
+        function returnFunc2(num1,num2){
+            let result2 = num1 - num2;
+            return result2
+        }
+        let result2 = returnFunc2(20,10);
+        console.log(result2);
+
+        console.log(returnFunc2(30,20));
+    </script>
+
+    <script>
+        function myFunc(name){
+            console.log('나를 불렀니?');
+            return 'hello' + name;
+        }
+        myFunc('정은');
+        // 리턴이라서 나를 불렀니만 출력됨
+        console.log(myFunc('정은'));
+
+        console.log('-----------------------------------')
+
+        // ES5 부터 사용이 가능한 방식
+        // 이름없이 함수를 만들고 + const에 함수명을 사용
+        const myFun = function (myName){
+            console.log('나를 불렀니?');
+            return 'hello' + myName;
+            // 리턴 값이 const myFun에 저장
+        }
+        myFun('다래');
+        console.log(myFun('다래'));
+
+    </script>
+
+    <h1>화살표 함수</h1>
+    : ES6부터 사용이 가능한 함수 정의법
+    - 가독성은 낮으나 코드량을 줄일 수 있는 방법
+    - 표현식 함수처럼 변수화를 사용할 수 있음
+    <script>
+        const arrowFunc = (param1, param2) => {
+            // 스크립트 코드 작성
+            let result = param1 + param2;
+            return result;
+        }
+        // 처리에 대한 결과값이 하나인 경우
+        const arrowFunc2 = (p1,p2) => p1+p2;
+        // 처리에 대한 결과값이 여러개인 경우 (자주 사용)
+        const arrowFunc3 = (a, b) => {
+            console.log('리턴 없음', a+b);
+        }
+        let result3 = arrowFunc(10,20);
+        console.log(result3);
+        console.log(arrowFunc2(5,3));
+    </script>
+</body>
+</html>

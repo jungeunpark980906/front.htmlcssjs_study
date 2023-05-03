@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배경속성</title>
+    <style>
+        /* 배경색과 이미지를 같이 넣는 경우,
+        배경 이미지가 우선출력 + 이미지가 출력되지 않는 부분은 색상이 출력
+        배경 이미지 크기 : background-size (가로, 세로, 크기);
+        배경 이미지 반복 : background-repeat 
+            no-repeat 반복없음
+            repeat-x x축 반복
+            repeat-y y축 반복
+            round 양쪽반복
+            기본값은 반복되는 형태
+        배경 이미지 위치 : background-position
+            center 가운데
+            x축, y축
+        background: color image position/size repeat 순 입력
+            */
+            /* box-shadow : 수평 수직 번짐정도 그림자크기 색상 방향 (번짐정도,그림자크기,색상,방향 생략가능) 
+            -text-shadow도 동일
+            -방향 inset = 안쪽 그림자 */
+            .box{
+                background-color: antiquewhite;
+                background-image: url(/image/냥4.jpg);
+                background-size: 200px 200px;
+                background-repeat: no-repeat;
+                background-position: 30px 30px;
+                /* 왼 위로 여백 설정 */
+                box-shadow: 10px 10px 5px black ;
+
+                width: 300px;
+                height: 300px;
+            }
+            .box2{
+                background-image: url(/image/냥7.jpg);
+                background-size: 100%;
+                
+                width: 300px;
+                height: 300px;
+            }
+
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <div class="box2"></div>
+</body>
+</html>

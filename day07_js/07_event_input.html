@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event-데이터받기</title>
+    <!-- 전송 버튼을 누르면, 입력 값이 info부분에 하나씩 출력되는 프로그램 -->
+    <!-- 전송 버튼을 누르면, 입력 값이 ol의 li부분에 하나씩 저장되는 프로그램 -->
+
+</head>
+<body>
+    <form action="" id="myForm">
+        <fieldset>
+            <!-- 네모칸을 쳐서 묶어줌 -->
+            <legend>해당 필드의 제목(이벤트를 활용한 전송)</legend>
+            ID : <input type="text" id="userid"><br>
+            PW : <input type="password" id="userpw"><br>
+            Birth : <input type="date"  id="birth"><br>
+            Pin : <input type="number" id="pin"><br>
+            <button type="button" onclick="clickEventOccurend();">전송</button>
+            <button type="button" onclick="makeList();">리스트로 출력</button>
+        </fieldset>
+    </form>
+
+    <h3 id="info">
+        <ol id="ol">
+
+        </ol>
+    </h3>
+
+    <script>
+        // 리스트 출력용 함수
+        function makeList(){
+            // 회면에서 입력한 값을 받아오는 과정
+            // .value로 값을 가져오기
+            let userid = document.getElementById('userid').value;
+            let userpw = document.getElementById('userpw').value;
+            let birth = document.getElementById('birth').value;
+            let pin = document.getElementById('pin').value;
+
+            // 형식변환 (birth : string -> date / pin : string -> number)  
+            pin = parseInt(pin); // parseInt() 사용 : 정수로 변경될 수 있는 문자만 가능
+            pin = Number(pin); // number() 사용 : 숫자로 변경될 수 있는 문자만 가능
+            birth = new Date(birth);
+
+            // ol태그의 li에 넣는 과정
+            // 방법 1 : 사용 x
+            // let ol = document.getElementById('ol');
+            // ol.innerHTML = `<li>${typeof userid}: ${userid}</li>`;
+            // ol.innerHTML += `<li>${typeof userpw}: ${userpw}</li>`;
+            // ol.innerHTML += `<li>${typeof birth}: ${birth}</li>`;
+            // ol.innerHTML += `<li>${typeof pin}: ${pin}</li>`;
+
+            // 방법 2
+            let ol = document.getElementById('ol');
+            let str = `<li>${typeof userid}: ${userid}</li> <li>${typeof userpw}: ${userpw}</li>
+            <li>${typeof birth}: ${birth}</li> <li>${typeof pin}: ${pin}</li>`;
+            ol.innerHTML = str;
+        }
+
+        // 전송버튼용 함수
+        function clickEventOccurend(){
+            // 회면에서 입력한 값을 받아오는 과정
+            // .value로 값을 가져오기
+            let userid = document.getElementById('userid').value;
+            let userpw = document.getElementById('userpw').value;
+            let birth = document.getElementById('birth').value;
+            let pin = document.getElementById('pin').value;
+         
+            // h3태그에 출력하는 과정
+            let info = document.getElementById('info');
+            document.getElementById('info').innerText = `userid : ${userid} => 타입: ${typeof userid}`;
+            document.getElementById('info').innerText += `userpw : ${userpw} => 타입: ${typeof userpw}`;
+            info.innerText += `birth : ${birth} => 타입: ${typeof birth}`;
+            info.innerText += `pin : ${pin} => 타입: ${typeof pin}`;
+        }
+    </script>
+</body>
+</html>

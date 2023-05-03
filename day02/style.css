@@ -1,0 +1,37 @@
+#input1 {
+    height: 100px;
+    font-size: 50px;
+    color: blue;
+}
+#daum {
+    color: rgb(236, 55, 140);
+}
+.daum:hover{
+    color: black;
+    background-color: darkorange;
+}
+
+    body{
+        text-align: center;
+    }
+    h1{
+        border: 5px solid black;
+        margin: 30px auto;
+        height: 50px;
+        width: 12%;
+    }
+    ul>li{
+        list-style: none;
+        display: inline;
+        margin-right:20px;
+    }
+    ul{
+        list-style: none;
+        width: 50%;
+        margin: 10px auto;
+    }
+   
+    img{
+        margin-top: 30px;
+        width: 50%;
+    }
